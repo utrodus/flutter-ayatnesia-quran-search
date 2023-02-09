@@ -13,7 +13,7 @@ class DetailView extends GetView<DetailController> {
         title: const Text('DetailView'),
         centerTitle: true,
       ),
-      body: Center(
+      body: const Center(
         child: Text(
           'DetailView is working',
           style: TextStyle(fontSize: 20),

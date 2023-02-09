@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import '../constant/app_colors.dart';
 
 /// Font Family Configs
-String get nunito => "nunito";
-String get nunitoSans => "NunitoSans";
+String get nunito => "Poppins";
 
 FontWeight get regular => FontWeight.w400;
 FontWeight get bold => FontWeight.w700;
@@ -12,9 +11,9 @@ FontWeight get extraBold => FontWeight.w800;
 /// Text Theme Configs
 TextTheme get textTheme => TextTheme(
       displayLarge: TextStyle(
+        color: AppColors.primary,
         fontSize: 32,
         height: 1.5,
-        color: AppColors.primary,
         fontWeight: bold,
       ),
       displayMedium: TextStyle(
@@ -90,9 +89,7 @@ TextStyle h4Bold(BuildContext context) =>
     Theme.of(context).textTheme.headlineMedium!;
 
 TextStyle h5Bold(BuildContext context) =>
-    Theme.of(context).textTheme.headlineSmall!.copyWith(
-          fontFamily: nunitoSans,
-        );
+    Theme.of(context).textTheme.headlineSmall!;
 
 TextStyle h6Bold(BuildContext context) =>
     Theme.of(context).textTheme.titleLarge!;
@@ -102,28 +99,18 @@ TextStyle bodyText1Bold(BuildContext context) =>
           fontWeight: bold,
         );
 TextStyle bodyText1NunitoSans(BuildContext context) =>
-    Theme.of(context).textTheme.bodyLarge!.copyWith(fontFamily: nunitoSans);
+    Theme.of(context).textTheme.bodyLarge!;
 
 TextStyle bodyText2Regular(BuildContext context) =>
     Theme.of(context).textTheme.bodyMedium!.copyWith(
-          fontFamily: nunitoSans,
           color: AppColors.onSecondary,
-        );
-TextStyle urlTextBold(BuildContext context) =>
-    Theme.of(context).textTheme.bodyLarge!.copyWith(
-          fontWeight: bold,
-          color: AppColors.urlColor,
         );
 
 TextStyle bodyText2Bold(BuildContext context) =>
     Theme.of(context).textTheme.bodyMedium!.copyWith(fontWeight: bold);
 
 TextStyle subtitle1Regular(BuildContext context) =>
-    Theme.of(context).textTheme.titleMedium!.copyWith(
-          fontFamily: nunitoSans,
-        );
+    Theme.of(context).textTheme.titleMedium!;
 
-TextStyle subtitle1Bold(BuildContext context) => Theme.of(context)
-    .textTheme
-    .titleMedium!
-    .copyWith(fontFamily: nunitoSans, fontWeight: bold);
+TextStyle subtitle1Bold(BuildContext context) =>
+    Theme.of(context).textTheme.titleMedium!.copyWith(fontWeight: bold);
