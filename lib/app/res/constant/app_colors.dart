@@ -4,7 +4,7 @@ class AppColors {
   AppColors._();
   static const Color primary = Color(0xff16A885);
   static const Color secondary = Color(0xff1D352E);
-  static const Color disabled = Color(0xffbabdc9);
+  static const Color disabled = Color.fromARGB(255, 138, 141, 153);
   static const Color onPrimary = Colors.white;
   static const Color onSecondary = Colors.black;
   static const Color background = Colors.white;
@@ -19,4 +19,8 @@ class AppColors {
   static Color lightShadowColor = const Color(0xffCDCDCD);
   static Color skeletonBaseColor = const Color(0xFFF5F5F5);
   static Color skeletonHightlightColor = const Color(0xFFE0E0E0);
+  static List<Color> primaryGradient = <Color>[
+    const Color(0xff79C498),
+    const Color(0xff31B4AC),
+  ];
 }
