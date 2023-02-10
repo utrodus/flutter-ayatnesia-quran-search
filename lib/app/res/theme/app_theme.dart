@@ -56,8 +56,8 @@ BottomNavigationBarThemeData get bottomNavigatonBarThemeData =>
       backgroundColor: AppColors.background,
       unselectedItemColor: AppColors.disabled,
       selectedItemColor: AppColors.primary,
-      unselectedLabelStyle: TextStyle(fontWeight: regular, fontSize: 14),
-      selectedLabelStyle: TextStyle(fontWeight: bold, fontSize: 14),
+      unselectedLabelStyle: TextStyle(fontWeight: regular, fontSize: 13),
+      selectedLabelStyle: TextStyle(fontWeight: bold, fontSize: 13),
     );
 
 InputDecorationTheme get inputDecorationTheme => InputDecorationTheme(
