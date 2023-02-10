@@ -1,9 +1,9 @@
 import 'package:get/get.dart';
 
 import '../modules/all_surah/views/all_surah_view.dart';
-import '../modules/detail/bindings/detail_binding.dart';
-import '../modules/detail/views/detail_view.dart';
-import '../modules/search/views/search_view.dart';
+import '../modules/detail_surah/bindings/detail_surah_binding.dart';
+import '../modules/detail_surah/views/detail_surah_view.dart';
+import '../modules/search_verses/views/search_verses_view.dart';
 import '../modules/main_screen/bindings/main_screen_binding.dart';
 import '../modules/main_screen/views/main_screen_view.dart';
 import '../modules/onboard/bindings/onboard_binding.dart';
@@ -27,13 +27,13 @@ class AppPages {
       ),
     ),
     GetPage(
-      name: _Paths.search,
-      page: () => const SearchView(),
+      name: _Paths.searchVerses,
+      page: () => const SearchVersesView(),
     ),
     GetPage(
-      name: _Paths.detail,
-      page: () => const DetailView(),
-      binding: DetailBinding(),
+      name: _Paths.detailSurah,
+      page: () => const DetailSurahView(),
+      binding: DetailSurahBinding(),
     ),
     GetPage(
       name: _Paths.mainScreen,

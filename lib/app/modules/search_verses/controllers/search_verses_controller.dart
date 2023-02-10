@@ -1,20 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-enum SearchStatus { initial, loading, success, error }
+enum AppState { initial, loading, success, error }
 
-class SearchController extends GetxController {
-  late Rx<SearchStatus> searchStatus;
-  SearchController() {
-    searchStatus = SearchStatus.initial.obs;
+class SearchVersesController extends GetxController {
+  late Rx<AppState> appState;
+  SearchVersesController() {
+    appState = AppState.initial.obs;
   }
-  TextEditingController searchController = TextEditingController();
+  TextEditingController searchTextFieldController = TextEditingController();
   FocusNode searchFocusNode = FocusNode();
-
   late RxString searchQuery = ''.obs;
 
   void onTapClearSearchTextField() {
-    searchController.clear();
+    searchTextFieldController.clear();
     searchQuery.value = '';
     searchFocusNode.requestFocus();
   }

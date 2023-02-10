@@ -6,10 +6,10 @@ import 'package:quran_finder/app/res/constant/app_assets.dart';
 import 'package:quran_finder/app/res/constant/app_colors.dart';
 import 'package:quran_finder/app/res/theme/app_text_style.dart';
 
-import '../controllers/search_controller.dart';
+import '../controllers/search_verses_controller.dart';
 
-class SearchView extends GetView<SearchController> {
-  const SearchView({Key? key}) : super(key: key);
+class SearchVersesView extends GetView<SearchVersesController> {
+  const SearchVersesView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -50,7 +50,7 @@ class SearchView extends GetView<SearchController> {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Image(
-                          image: const AssetImage(AppAssets.icLogo),
+                          image: const AssetImage(AppAssets.imgLogo),
                           width: Get.width * 0.08,
                         ),
                         const SizedBox(
@@ -74,7 +74,7 @@ class SearchView extends GetView<SearchController> {
                     ),
                     const SizedBox(height: 15),
                     Obx(() => TextFormField(
-                          controller: controller.searchController,
+                          controller: controller.searchTextFieldController,
                           focusNode: controller.searchFocusNode,
                           decoration: InputDecoration(
                             prefixIcon: const Icon(Ionicons.search),
@@ -107,8 +107,8 @@ class SearchView extends GetView<SearchController> {
                 ),
               ),
               Obx(() {
-                switch (controller.searchStatus.value) {
-                  case SearchStatus.initial:
+                switch (controller.appState.value) {
+                  case AppState.initial:
                     return Padding(
                       padding: EdgeInsets.only(top: Get.height * 0.13),
                       child: Center(
@@ -135,9 +135,9 @@ class SearchView extends GetView<SearchController> {
                         ],
                       )),
                     );
-                  case SearchStatus.loading:
+                  case AppState.loading:
                     return Container();
-                  case SearchStatus.success:
+                  case AppState.success:
                     return Padding(
                       padding: const EdgeInsets.symmetric(
                         horizontal: 25.0,
@@ -149,7 +149,7 @@ class SearchView extends GetView<SearchController> {
                         ],
                       ),
                     );
-                  case SearchStatus.error:
+                  case AppState.error:
                     return Container();
                   default:
                     return Container();

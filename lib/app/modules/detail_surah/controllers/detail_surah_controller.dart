@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 
-class DetailController extends GetxController {
+class DetailSurahController extends GetxController {
   //TODO: Implement DetailController
 
   final count = 0.obs;

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
-import 'package:quran_finder/app/modules/search/views/search_view.dart';
+import 'package:quran_finder/app/modules/search_verses/views/search_verses_view.dart';
 
 import '../../all_surah/views/all_surah_view.dart';
 import '../controllers/main_screen_controller.dart';
@@ -16,7 +16,7 @@ class MainScreenView extends GetView<MainScreenController> {
         body: IndexedStack(
           index: controller.tabIndex.value,
           children: const [
-            SearchView(),
+            SearchVersesView(),
             AllSurahView(),
           ],
         ),

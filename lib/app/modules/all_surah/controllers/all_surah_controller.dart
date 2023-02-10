@@ -1,9 +1,30 @@
+import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 
+import '../../search_verses/controllers/search_verses_controller.dart';
+
 class AllSurahController extends GetxController {
-  //TODO: Implement AllSurahController
+  AllSurahController() {
+    appState = AppState.initial.obs;
+  }
+  late Rx<AppState> appState;
+  TextEditingController searchSurahTextFieldController =
+      TextEditingController();
+  FocusNode searchFocusNode = FocusNode();
+  late RxString searchSurahQuery = ''.obs;
+  void onTapClearSearchTextField() {
+    searchSurahTextFieldController.clear();
+    searchSurahQuery.value = '';
+    searchFocusNode.requestFocus();
+  }
 
-  final count = 0.obs;
+  void onChangedSearchTextField(String value) {
+    searchSurahQuery.value = value;
+  }
 
-  void increment() => count.value++;
+  void onFieldSubmittedSearchTextField() {
+    if (searchSurahQuery.value.isNotEmpty) {
+      searchFocusNode.unfocus();
+    }
+  }
 }
