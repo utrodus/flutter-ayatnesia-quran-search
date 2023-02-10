@@ -51,11 +51,13 @@ ElevatedButtonThemeData get elevatedButtonThemeData => ElevatedButtonThemeData(
     );
 
 BottomNavigationBarThemeData get bottomNavigatonBarThemeData =>
-    const BottomNavigationBarThemeData(
-      elevation: 5,
+    BottomNavigationBarThemeData(
+      elevation: 30,
       backgroundColor: AppColors.background,
-      unselectedItemColor: AppColors.grey,
-      selectedItemColor: AppColors.secondary,
+      unselectedItemColor: AppColors.disabled,
+      selectedItemColor: AppColors.primary,
+      unselectedLabelStyle: TextStyle(fontWeight: regular, fontSize: 14),
+      selectedLabelStyle: TextStyle(fontWeight: bold, fontSize: 14),
     );
 
 InputDecorationTheme get inputDecorationTheme => InputDecorationTheme(
