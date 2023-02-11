@@ -20,7 +20,6 @@ ThemeData get appTheme => ThemeData(
       ),
       textTheme: textTheme,
       elevatedButtonTheme: elevatedButtonThemeData,
-      bottomNavigationBarTheme: bottomNavigatonBarThemeData,
       inputDecorationTheme: inputDecorationTheme,
       appBarTheme: appBarThemeData,
     );
@@ -48,16 +47,6 @@ ElevatedButtonThemeData get elevatedButtonThemeData => ElevatedButtonThemeData(
         ),
         elevation: 0,
       ),
-    );
-
-BottomNavigationBarThemeData get bottomNavigatonBarThemeData =>
-    BottomNavigationBarThemeData(
-      elevation: 30,
-      backgroundColor: AppColors.background,
-      unselectedItemColor: AppColors.disabled,
-      selectedItemColor: AppColors.primary,
-      unselectedLabelStyle: TextStyle(fontWeight: regular, fontSize: 13),
-      selectedLabelStyle: TextStyle(fontWeight: bold, fontSize: 13),
     );
 
 InputDecorationTheme get inputDecorationTheme => InputDecorationTheme(
