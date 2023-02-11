@@ -51,3 +51,9 @@ flutter:
           weight: 500
         - asset: assets/fonts/Poppins-Regular.ttf
           weight: 400
+    - family: Amiri
+      fonts:
+        - asset: assets/fonts/Amiri-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/Amiri-Regular.ttf
+          weight: 400
