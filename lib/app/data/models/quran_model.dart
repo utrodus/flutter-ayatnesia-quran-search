@@ -6,8 +6,8 @@ import 'dart:convert';
 import 'ayah_model.dart';
 import 'bismillah_model.dart';
 
-List<QuranModel> quranModelFromJson(String str) =>
-    List<QuranModel>.from(json.decode(str).map((x) => QuranModel.fromJson(x)));
+List<QuranModel> quranModelFromJson(List<dynamic> data) =>
+    List<QuranModel>.from(data.map((x) => QuranModel.fromJson(x)));
 
 String quranModelToJson(List<QuranModel> data) =>
     json.encode(List<dynamic>.from(data.map((x) => x.toJson())));

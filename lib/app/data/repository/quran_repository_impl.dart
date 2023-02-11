@@ -13,12 +13,12 @@ class QuranRepositoryImpl extends QuranRepository {
   @override
   Future<AppResponse<List<QuranModel>>> getQuranData() async {
     try {
-      var jsonString = await quranLocalDataSource.loadQuranFromJson();
-      final List<QuranModel> quranModel = quranModelFromJson(jsonString);
-      return AppResponse.success(quranModel);
+      var jsonData = await quranLocalDataSource.loadQuranFromJson();
+      final List<QuranModel> quranModel = quranModelFromJson(jsonData);
+      return AppResponse.success(data: quranModel);
     } catch (e) {
-      Log.e(_prefix, "getQuran ERROR ${e.toString()}");
-      return AppResponse.error(e.toString());
+      Log.e(_prefix, "getQuranData ERROR ${e.toString()}");
+      return AppResponse.error(message: e.toString());
     }
   }
 }

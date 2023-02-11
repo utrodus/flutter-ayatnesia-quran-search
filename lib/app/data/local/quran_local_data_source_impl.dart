@@ -18,7 +18,7 @@ class QuranLocalDataSourceImpl extends QuranLocalDataSource {
       return responseJson;
     } catch (e) {
       Log.e(_prefix, "getAllData ERROR ${e.toString()}");
-      throw AppResponse.error(e.toString());
+      throw AppResponse.error(message: e.toString());
     }
   }
 }

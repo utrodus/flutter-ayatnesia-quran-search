@@ -11,9 +11,9 @@ class AppResponse<T> {
 
   AppResponse.loading() : status = Status.loading;
 
-  AppResponse.success(this.data) : status = Status.success;
+  AppResponse.success({this.data}) : status = Status.success;
 
-  AppResponse.error(this.message) : status = Status.error;
+  AppResponse.error({this.message}) : status = Status.error;
 
   @override
   String toString() {
