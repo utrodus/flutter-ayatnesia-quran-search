@@ -25,7 +25,6 @@ class OnboardView extends GetView<OnboardController> {
                       children: <Widget>[
                         SizedBox(height: Get.height * 0.06),
                         FadeInDown(
-                          duration: const Duration(milliseconds: 300),
                           child: Text(
                             "Qur'an Finder",
                             style: h2Bold(context).copyWith(
@@ -35,7 +34,6 @@ class OnboardView extends GetView<OnboardController> {
                         ),
                         const SizedBox(height: 19),
                         FadeInDown(
-                          duration: const Duration(milliseconds: 300),
                           child: Text(
                             "Temukan Ayat Al Qur’an Sesuai\nKebutuhan melalui Fitur Pencarian\nyang kami Sediakan",
                             style: bodyText1Regular(context).copyWith(),
@@ -44,7 +42,6 @@ class OnboardView extends GetView<OnboardController> {
                         ),
                         const SizedBox(height: 39),
                         FadeInUpBig(
-                          duration: const Duration(milliseconds: 600),
                           child: Center(
                             child: Image(
                               image: const AssetImage(AppAssets.imgOnboard),
