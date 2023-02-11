@@ -37,6 +37,8 @@ flutter:
   uses-material-design: true
   assets:
     - assets/
+    - assets/img/
+    - assets/json/
   fonts:
     - family: Poppins
       fonts:
