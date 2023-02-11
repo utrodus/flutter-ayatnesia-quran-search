@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 // )
 
 //Copy this CustomPainter code to the Bottom of the File
-class RPSCustomPainter extends CustomPainter {
+class CustomBorderSurahItem extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     Path path_0 = Path();

@@ -6,7 +6,11 @@ import 'package:quran_finder/app/utils/app_response.dart';
 
 class AllSurahController extends GetxController {
   late QuranRepository quranRepo;
-  AppResponse<List<QuranModel>> quranResponse = AppResponse.initial();
+
+  late Rx<AppResponse<List<QuranModel>>> quranResponse =
+      Rx<AppResponse<List<QuranModel>>>(
+    AppResponse.initial(),
+  );
 
   AllSurahController(QuranRepository quranRepository) {
     quranRepo = quranRepository;
@@ -34,16 +38,12 @@ class AllSurahController extends GetxController {
   }
 
   Future getAllSurah() async {
-    quranResponse = AppResponse.loading();
-    update();
+    quranResponse.value = AppResponse.loading();
     try {
       final quran = await quranRepo.getQuranData();
-      quranResponse = AppResponse.success(data: quran.data);
-      debugPrint(quranResponse.data![0].name);
-      update();
+      quranResponse.value = AppResponse.success(data: quran.data);
     } catch (e) {
-      quranResponse = AppResponse.error(message: e.toString());
-      update();
+      quranResponse.value = AppResponse.error(message: e.toString());
     }
   }
 }

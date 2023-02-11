@@ -2,12 +2,15 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
+import 'package:quran_finder/app/data/models/quran_model.dart';
 import 'package:quran_finder/app/res/components/custom_appbar.dart';
+import 'package:quran_finder/app/utils/app_response.dart';
 
 import '../../../res/constant/app_assets.dart';
 import '../../../res/constant/app_colors.dart';
 import '../../../res/theme/app_text_style.dart';
 import '../controllers/all_surah_controller.dart';
+import 'widgets/surah_item.dart';
 
 class AllSurahView extends GetView<AllSurahController> {
   const AllSurahView({Key? key}) : super(key: key);
@@ -20,6 +23,7 @@ class AllSurahView extends GetView<AllSurahController> {
         isBackButton: false,
       ),
       body: SingleChildScrollView(
+          physics: const BouncingScrollPhysics(),
           padding: const EdgeInsets.symmetric(
             horizontal: 16,
             vertical: 18,
@@ -124,6 +128,48 @@ class AllSurahView extends GetView<AllSurahController> {
                     onFieldSubmitted: (_) =>
                         controller.onFieldSubmittedSearchTextField(),
                   )),
+              const SizedBox(
+                height: 28,
+              ),
+              Obx(() {
+                switch (controller.quranResponse.value.status) {
+                  case Status.loading:
+                    return Container();
+                  case Status.success:
+                    return ListView.builder(
+                      shrinkWrap: true,
+                      physics: const NeverScrollableScrollPhysics(),
+                      itemCount: controller.quranResponse.value.data!.length,
+                      itemBuilder: (context, index) {
+                        QuranModel surah =
+                            controller.quranResponse.value.data![index];
+                        return SurahItem(
+                          onTap: () {
+                            //   => Get.toNamed(
+                            //   "/search-verses",
+                            //   arguments: SearchVersesController(
+                            //     surahNumber: controller
+                            //         .quranResponse.value.data![index].number
+                            //         .toString(),
+                            //     surahName: controller.quranResponse.value.data![index]
+                            //         .name.transliteration.id,
+                            //   ),
+                            // )
+                          },
+                          numberSurah: surah.number.toString(),
+                          title: surah.name,
+                          title2: surah.revelation,
+                          subtitle1: surah.translation,
+                          subtitle2: "${surah.numberOfAyahs.toString()} Ayat",
+                        );
+                      },
+                    );
+                  case Status.error:
+                    return Container();
+                  default:
+                    return Container();
+                }
+              })
             ],
           )),
     );
