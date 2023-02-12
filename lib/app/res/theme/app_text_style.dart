@@ -3,6 +3,7 @@ import '../constant/app_colors.dart';
 
 /// Font Family Configs
 String get nunito => "Poppins";
+String get amiri => "Amiri";
 
 FontWeight get regular => FontWeight.w400;
 FontWeight get medium => FontWeight.w500;
@@ -89,6 +90,18 @@ TextStyle h5Bold(BuildContext context) =>
 
 TextStyle h6Bold(BuildContext context) =>
     Theme.of(context).textTheme.titleLarge!;
+
+TextStyle arabicH2Bold(BuildContext context) =>
+    Theme.of(context).textTheme.displayMedium!.copyWith(
+          fontWeight: bold,
+          fontFamily: amiri,
+        );
+
+TextStyle arabicRegular(BuildContext context) =>
+    Theme.of(context).textTheme.displayMedium!.copyWith(
+          fontWeight: regular,
+          fontFamily: amiri,
+        );
 
 TextStyle bodyText1Regular(BuildContext context) =>
     Theme.of(context).textTheme.bodyLarge!;

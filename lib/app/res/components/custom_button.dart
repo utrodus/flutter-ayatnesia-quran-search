@@ -7,15 +7,17 @@ class CustomButton extends StatelessWidget {
   final double? width;
   final double? height;
   final VoidCallback? onPressed;
-  final Widget child;
+  final String title;
+  final TextStyle? titleStyle;
 
   const CustomButton({
     Key? key,
     required this.onPressed,
-    required this.child,
+    required this.title,
     this.borderRadius = const BorderRadius.all(Radius.circular(12)),
     this.width,
     this.height = 44.0,
+    this.titleStyle,
   }) : super(key: key);
 
   @override
@@ -35,11 +37,12 @@ class CustomButton extends StatelessWidget {
         ),
         child: Center(
             child: Text(
-          "Get Started",
-          style: h5Bold(context).copyWith(
-            color: AppColors.onPrimary,
-            fontWeight: semiBold,
-          ),
+          title,
+          style: titleStyle ??
+              h5Bold(context).copyWith(
+                color: AppColors.onPrimary,
+                fontWeight: medium,
+              ),
         )),
       ),
     );

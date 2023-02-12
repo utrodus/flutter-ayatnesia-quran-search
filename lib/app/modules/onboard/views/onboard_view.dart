@@ -59,9 +59,7 @@ class OnboardView extends GetView<OnboardController> {
                                 Routes.mainScreen,
                               );
                             },
-                            child: const Text(
-                              "Get Started",
-                            ),
+                            title: "Get Started",
                           ),
                         ),
                         const Spacer(),

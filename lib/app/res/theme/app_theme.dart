@@ -20,6 +20,7 @@ ThemeData get appTheme => ThemeData(
       ),
       textTheme: textTheme,
       elevatedButtonTheme: elevatedButtonThemeData,
+      outlinedButtonTheme: outlinedButtonThemeData,
       inputDecorationTheme: inputDecorationTheme,
       appBarTheme: appBarThemeData,
     );
@@ -44,6 +45,19 @@ ElevatedButtonThemeData get elevatedButtonThemeData => ElevatedButtonThemeData(
         ),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(12),
+        ),
+        elevation: 0,
+      ),
+    );
+
+OutlinedButtonThemeData get outlinedButtonThemeData => OutlinedButtonThemeData(
+      style: OutlinedButton.styleFrom(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(12),
+        ),
+        side: const BorderSide(
+          color: AppColors.primary,
+          width: 1,
         ),
         elevation: 0,
       ),

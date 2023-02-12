@@ -23,93 +23,97 @@ class SurahItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Padding(
-        padding: const EdgeInsets.only(bottom: 7),
-        child: Column(
-          children: [
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Stack(
-                  alignment: Alignment.center,
-                  children: [
-                    CustomPaint(
-                      size: const Size(50, 50),
-                      painter: CustomBorderSurahItem(),
-                    ),
-                    Text(
-                      numberSurah,
-                      style: h6Bold(context).copyWith(fontWeight: semiBold),
-                    ),
-                  ],
-                ),
-                const SizedBox(
-                  width: 15,
-                ),
-                Expanded(
-                  child: Column(
+    return Material(
+      color: Colors.transparent,
+      child: InkWell(
+        onTap: onTap,
+        child: Padding(
+          padding: const EdgeInsets.only(bottom: 7),
+          child: Column(
+            children: [
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Stack(
+                    alignment: Alignment.center,
                     children: [
-                      Row(
-                        children: [
-                          Text(
-                            title,
-                            style:
-                                h6Bold(context).copyWith(fontWeight: semiBold),
-                          ),
-                          Expanded(
-                            child: Text(
-                              title2,
-                              style: h6Bold(context).copyWith(
-                                color: AppColors.primary,
-                              ),
-                              textAlign: TextAlign.end,
-                            ),
-                          ),
-                        ],
+                      CustomPaint(
+                        size: const Size(50, 50),
+                        painter: CustomBorderSurahItem(),
                       ),
-                      const SizedBox(
-                        height: 3,
-                      ),
-                      Row(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Text(
-                            subtitle1,
-                            style: bodyText2Regular(context).copyWith(
-                              fontWeight: medium,
-                              color: AppColors.grey,
-                            ),
-                          ),
-                          Padding(
-                            padding:
-                                const EdgeInsets.symmetric(horizontal: 8.0),
-                            child: CircleAvatar(
-                              radius: 2,
-                              backgroundColor: AppColors.grey.withOpacity(0.4),
-                            ),
-                          ),
-                          Text(
-                            subtitle2,
-                            style: bodyText2Regular(context).copyWith(
-                              fontWeight: medium,
-                              color: AppColors.grey,
-                            ),
-                          ),
-                        ],
+                      Text(
+                        numberSurah,
+                        style: h6Bold(context).copyWith(fontWeight: semiBold),
                       ),
                     ],
                   ),
-                ),
-              ],
-            ),
-            const SizedBox(height: 07),
-            Divider(
-              color: AppColors.grey.withOpacity(0.3),
-              thickness: 1,
-            ),
-          ],
+                  const SizedBox(
+                    width: 15,
+                  ),
+                  Expanded(
+                    child: Column(
+                      children: [
+                        Row(
+                          children: [
+                            Text(
+                              title,
+                              style: h6Bold(context)
+                                  .copyWith(fontWeight: semiBold),
+                            ),
+                            Expanded(
+                              child: Text(
+                                title2,
+                                style: h6Bold(context).copyWith(
+                                  color: AppColors.primary,
+                                ),
+                                textAlign: TextAlign.end,
+                              ),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(
+                          height: 3,
+                        ),
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Text(
+                              subtitle1,
+                              style: bodyText2Regular(context).copyWith(
+                                fontWeight: medium,
+                                color: AppColors.grey,
+                              ),
+                            ),
+                            Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 8.0),
+                              child: CircleAvatar(
+                                radius: 2,
+                                backgroundColor:
+                                    AppColors.grey.withOpacity(0.4),
+                              ),
+                            ),
+                            Text(
+                              subtitle2,
+                              style: bodyText2Regular(context).copyWith(
+                                fontWeight: medium,
+                                color: AppColors.grey,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 07),
+              Divider(
+                color: AppColors.grey.withOpacity(0.3),
+                thickness: 1,
+              ),
+            ],
+          ),
         ),
       ),
     );

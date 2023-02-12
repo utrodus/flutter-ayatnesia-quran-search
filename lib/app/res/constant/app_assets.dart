@@ -1,6 +1,7 @@
 class AppAssets {
   const AppAssets._();
   // images & icons filepath constants
+  static const imgBismillahArabic = "assets/img/img_bismillah_arabic.png";
   static const imgLogo = "assets/img/img_logo.png";
   static const imgInitialState = "assets/img/img_search_initial_state.png";
   static const imgEmptySearch = "assets/img/img_search_empty_state.png";

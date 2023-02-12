@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 
 import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:quran_finder/app/data/models/quran_model.dart';
 import 'package:quran_finder/app/res/components/custom_appbar.dart';
+import 'package:quran_finder/app/routes/app_pages.dart';
 import 'package:quran_finder/app/utils/app_response.dart';
 
 import '../../../res/constant/app_assets.dart';
@@ -20,158 +22,167 @@ class AllSurahView extends GetView<AllSurahController> {
       appBar: customAppBar(
         context: context,
         title: "Semua Surah Al Qur'an",
-        isBackButton: false,
+        isHasBackBtn: false,
       ),
-      body: SingleChildScrollView(
-          physics: const BouncingScrollPhysics(),
-          padding: const EdgeInsets.symmetric(
-            horizontal: 16,
-            vertical: 18,
-          ),
-          child: Column(
-            children: [
-              Container(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 15,
-                  vertical: 19,
-                ),
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    colors: AppColors.primaryGradient,
-                    begin: Alignment.topLeft,
-                    end: Alignment.bottomRight,
-                  ),
-                  borderRadius: const BorderRadius.all(
-                    Radius.circular(12),
-                  ),
-                ),
-                child: Column(
-                  mainAxisSize: MainAxisSize.max,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.start,
+      body: ListView(
+        physics: const BouncingScrollPhysics(),
+        padding: const EdgeInsets.only(
+          bottom: 18,
+        ),
+        children: [
+          Obx(() => Visibility(
+              visible: controller.quranResponse.value.status == Status.loading,
+              child: const LinearProgressIndicator())),
+          Container(
+            margin: const EdgeInsets.symmetric(
+              horizontal: 20,
+              vertical: 20,
+            ),
+            padding: const EdgeInsets.symmetric(
+              horizontal: 15,
+              vertical: 19,
+            ),
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                colors: AppColors.primaryGradient,
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+              ),
+              borderRadius: const BorderRadius.all(
+                Radius.circular(12),
+              ),
+            ),
+            child: Column(
+              mainAxisSize: MainAxisSize.max,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Expanded(
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.start,
+                    Expanded(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
-                              Row(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Image(
-                                    image:
-                                        const AssetImage(AppAssets.icBookWhite),
-                                    width: Get.width * 0.05,
-                                  ),
-                                  const SizedBox(
-                                    width: 8,
-                                  ),
-                                  Text(
-                                    "Sumber Data:",
-                                    style: h5Bold(context).copyWith(
-                                      color: AppColors.onPrimary,
-                                    ),
-                                  ),
-                                ],
+                              Image(
+                                image: const AssetImage(AppAssets.icBookWhite),
+                                width: Get.width * 0.05,
                               ),
-                              const SizedBox(height: 8),
+                              const SizedBox(
+                                width: 8,
+                              ),
                               Text(
-                                "Al Qur'an Kemenag RI,\nTanzil, Al-Quran-ID-API",
-                                style: h6Bold(context).copyWith(
+                                "Sumber Data:",
+                                style: h5Bold(context).copyWith(
                                   color: AppColors.onPrimary,
-                                  fontWeight: medium,
                                 ),
                               ),
                             ],
                           ),
-                        ),
-                        Image(
-                          image: const AssetImage(AppAssets.imgLogo),
-                          width: Get.width * 0.35,
-                        ),
-                      ],
+                          const SizedBox(height: 8),
+                          Text(
+                            "Al Qur'an Kemenag RI,\nTanzil, Al-Quran-ID-API",
+                            style: h6Bold(context).copyWith(
+                              color: AppColors.onPrimary,
+                              fontWeight: medium,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Image(
+                      image: const AssetImage(AppAssets.imgLogo),
+                      width: Get.width * 0.35,
                     ),
                   ],
                 ),
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              Obx(() => TextFormField(
-                    controller: controller.searchSurahTextFieldController,
-                    focusNode: controller.searchFocusNode,
-                    decoration: InputDecoration(
-                      prefixIcon: const Icon(Ionicons.search),
-                      hintText: "Masukkan nama surah",
-                      hintStyle: bodyText1Regular(context).copyWith(
-                        color: AppColors.secondary.withOpacity(0.5),
-                      ),
-                      suffixIcon: controller.searchSurahQuery.isEmpty
-                          ? null
-                          : GestureDetector(
-                              onTap: () =>
-                                  controller.onTapClearSearchTextField(),
-                              child: Icon(
-                                Icons.close_rounded,
-                                size: 20,
-                                color: Theme.of(context).colorScheme.error,
-                              ),
-                            ),
+              ],
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20.0),
+            child: Obx(() => TextFormField(
+                  controller: controller.searchSurahTextFieldController,
+                  focusNode: controller.searchFocusNode,
+                  autofocus: false,
+                  decoration: InputDecoration(
+                    prefixIcon: const Icon(Ionicons.search),
+                    hintText: "Masukkan nama surah",
+                    hintStyle: bodyText1Regular(context).copyWith(
+                      color: AppColors.secondary.withOpacity(0.5),
                     ),
-                    textInputAction: TextInputAction.search,
-                    style: bodyText1Bold(context),
-                    onChanged: (value) =>
-                        controller.onChangedSearchTextField(value),
-                    onFieldSubmitted: (_) =>
-                        controller.onFieldSubmittedSearchTextField(),
-                  )),
-              const SizedBox(
-                height: 28,
-              ),
-              Obx(() {
-                switch (controller.quranResponse.value.status) {
-                  case Status.loading:
-                    return Container();
-                  case Status.success:
-                    return ListView.builder(
+                    suffixIcon: controller.searchSurahQuery.isEmpty
+                        ? null
+                        : GestureDetector(
+                            onTap: () => controller.onTapClearSearchTextField(),
+                            child: Icon(
+                              Icons.close_rounded,
+                              size: 20,
+                              color: Theme.of(context).colorScheme.error,
+                            ),
+                          ),
+                  ),
+                  textInputAction: TextInputAction.search,
+                  style: bodyText1Bold(context),
+                  onChanged: (value) =>
+                      controller.onChangedSearchTextField(value),
+                  onFieldSubmitted: (_) =>
+                      controller.onFieldSubmittedSearchTextField(),
+                )),
+          ),
+          const SizedBox(
+            height: 28,
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20.0),
+            child: Obx(() {
+              switch (controller.quranResponse.value.status) {
+                case Status.loading:
+                  return Container();
+                case Status.success:
+                  return AnimationLimiter(
+                    child: ListView.builder(
                       shrinkWrap: true,
                       physics: const NeverScrollableScrollPhysics(),
                       itemCount: controller.quranResponse.value.data!.length,
                       itemBuilder: (context, index) {
                         QuranModel surah =
                             controller.quranResponse.value.data![index];
-                        return SurahItem(
-                          onTap: () {
-                            //   => Get.toNamed(
-                            //   "/search-verses",
-                            //   arguments: SearchVersesController(
-                            //     surahNumber: controller
-                            //         .quranResponse.value.data![index].number
-                            //         .toString(),
-                            //     surahName: controller.quranResponse.value.data![index]
-                            //         .name.transliteration.id,
-                            //   ),
-                            // )
-                          },
-                          numberSurah: surah.number.toString(),
-                          title: surah.name,
-                          title2: surah.revelation,
-                          subtitle1: surah.translation,
-                          subtitle2: "${surah.numberOfAyahs.toString()} Ayat",
+                        return AnimationConfiguration.staggeredList(
+                          position: index,
+                          duration: const Duration(milliseconds: 400),
+                          child: SlideAnimation(
+                            verticalOffset: 50.0,
+                            child: FadeInAnimation(
+                              child: SurahItem(
+                                onTap: () => Get.toNamed(Routes.detailSurah,
+                                    arguments: surah),
+                                numberSurah: surah.number.toString(),
+                                title: surah.name,
+                                title2: surah.revelation,
+                                subtitle1: surah.translation,
+                                subtitle2:
+                                    "${surah.numberOfAyahs.toString()} Ayat",
+                              ),
+                            ),
+                          ),
                         );
                       },
-                    );
-                  case Status.error:
-                    return Container();
-                  default:
-                    return Container();
-                }
-              })
-            ],
-          )),
+                    ),
+                  );
+                case Status.error:
+                  return Container();
+                default:
+                  return Container();
+              }
+            }),
+          )
+        ],
+      ),
     );
   }
 }

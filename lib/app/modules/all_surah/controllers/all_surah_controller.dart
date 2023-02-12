@@ -46,4 +46,10 @@ class AllSurahController extends GetxController {
       quranResponse.value = AppResponse.error(message: e.toString());
     }
   }
+
+  @override
+  void onClose() {
+    super.onClose();
+    searchSurahTextFieldController.dispose();
+  }
 }
