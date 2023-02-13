@@ -40,17 +40,21 @@ class MainScreenView extends GetView<MainScreenController> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  BottomNavItem(
-                    onTap: () => controller.tabIndex.value = 0,
-                    icon: Ionicons.search,
-                    title: "Cari Ayat",
-                    isSelected: controller.tabIndex.value == 0,
+                  Expanded(
+                    child: BottomNavItem(
+                      onTap: () => controller.tabIndex.value = 0,
+                      icon: Ionicons.search,
+                      title: "Cari Ayat",
+                      isSelected: controller.tabIndex.value == 0,
+                    ),
                   ),
-                  BottomNavItem(
-                    onTap: () => controller.tabIndex.value = 1,
-                    icon: Ionicons.book_outline,
-                    title: "Semua Surah",
-                    isSelected: controller.tabIndex.value == 1,
+                  Expanded(
+                    child: BottomNavItem(
+                      onTap: () => controller.tabIndex.value = 1,
+                      icon: Ionicons.book_outline,
+                      title: "Semua Surah",
+                      isSelected: controller.tabIndex.value == 1,
+                    ),
                   ),
                 ],
               ),
