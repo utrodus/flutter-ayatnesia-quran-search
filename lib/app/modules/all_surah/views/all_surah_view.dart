@@ -25,6 +25,7 @@ class AllSurahView extends GetView<AllSurahController> {
         isHasBackBtn: false,
       ),
       body: ListView(
+        controller: controller.scrollController,
         physics: const BouncingScrollPhysics(),
         padding: const EdgeInsets.only(
           bottom: 18,
@@ -127,7 +128,7 @@ class AllSurahView extends GetView<AllSurahController> {
                           ),
                   ),
                   textInputAction: TextInputAction.search,
-                  style: bodyText1Bold(context),
+                  style: bodyText1Regular(context),
                   onChanged: (value) =>
                       controller.onChangedSearchTextField(value),
                   onFieldSubmitted: (_) =>
@@ -187,6 +188,19 @@ class AllSurahView extends GetView<AllSurahController> {
             }),
           )
         ],
+      ),
+      floatingActionButton: Obx(
+        () => Visibility(
+          visible: controller.showBackToTopButton.value,
+          child: FloatingActionButton(
+            onPressed: controller.scrollToTop,
+            backgroundColor: AppColors.primary,
+            child: const Icon(
+              Icons.arrow_upward,
+              color: AppColors.onPrimary,
+            ),
+          ),
+        ),
       ),
     );
   }

@@ -21,4 +21,21 @@ class QuranRepositoryImpl extends QuranRepository {
       return AppResponse.error(message: e.toString());
     }
   }
+
+  @override
+  Future<AppResponse<List<QuranModel>>> searchSurahName(
+      {required String query}) async {
+    try {
+      var jsonData = await quranLocalDataSource.loadQuranFromJson();
+      final List<QuranModel> quranModel = quranModelFromJson(jsonData);
+      final List<QuranModel> searchResult = quranModel
+          .where((element) =>
+              element.name.toLowerCase().contains(query.toLowerCase()))
+          .toList();
+      return AppResponse.success(data: searchResult);
+    } catch (e) {
+      Log.e(_prefix, "searchSurahName ERROR ${e.toString()}");
+      return AppResponse.error(message: e.toString());
+    }
+  }
 }
