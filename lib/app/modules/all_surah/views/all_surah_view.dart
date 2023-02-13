@@ -159,8 +159,13 @@ class AllSurahView extends GetView<AllSurahController> {
                             verticalOffset: 50.0,
                             child: FadeInAnimation(
                               child: SurahItem(
-                                onTap: () => Get.toNamed(Routes.detailSurah,
-                                    arguments: surah),
+                                onTap: () {
+                                  controller.searchFocusNode.unfocus();
+                                  Get.toNamed(
+                                    Routes.detailSurah,
+                                    arguments: surah,
+                                  );
+                                },
                                 numberSurah: surah.number.toString(),
                                 title: surah.name,
                                 title2: surah.revelation,
