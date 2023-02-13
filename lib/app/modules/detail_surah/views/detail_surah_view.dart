@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:quran_finder/app/data/models/quran_model.dart';
-import 'package:quran_finder/app/res/components/custom_button.dart';
 import 'package:quran_finder/app/res/components/verse_item_widget.dart';
 import 'package:quran_finder/app/res/constant/app_assets.dart';
 import 'package:quran_finder/app/res/constant/app_colors.dart';
@@ -23,7 +22,22 @@ class DetailSurahView extends GetView<DetailSurahController> {
           title: "${surahData.number} - ${surahData.name}",
           isHasBackBtn: true,
         ),
+        // This is our back-to-top button
+        floatingActionButton: Obx(
+          () => Visibility(
+            visible: controller.showBackToTopButton.value,
+            child: FloatingActionButton(
+              onPressed: controller.scrollToTop,
+              backgroundColor: AppColors.primary,
+              child: const Icon(
+                Icons.arrow_upward,
+                color: AppColors.onPrimary,
+              ),
+            ),
+          ),
+        ),
         body: SingleChildScrollView(
+          controller: controller.scrollController,
           padding: const EdgeInsets.symmetric(
             horizontal: 26,
             vertical: 18,
@@ -84,18 +98,6 @@ class DetailSurahView extends GetView<DetailSurahController> {
                         ),
                       ],
                     ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    CustomButton(
-                      width: Get.width * 0.4,
-                      onPressed: () {},
-                      title: "Detail deskripsi",
-                      titleStyle: h6Bold(context).copyWith(
-                        color: AppColors.onPrimary,
-                        fontWeight: semiBold,
-                      ),
-                    ),
                   ],
                 ),
               ),
@@ -132,7 +134,86 @@ class DetailSurahView extends GetView<DetailSurahController> {
                     number: verse.number.inSurah.toString(),
                     verseArabic: verse.arab,
                     verseTranslation: verse.translation,
-                    onPressed: () {},
+                    onPressed: () {
+                      Get.generalDialog(
+                        pageBuilder: (BuildContext context,
+                            Animation<double> animation,
+                            Animation<double> secondaryAnimation) {
+                          return Scaffold(
+                            appBar: AppBar(
+                              title: Text(
+                                "Tafsir ${surahData.name} : ${verse.number.inSurah}",
+                                style: h5Bold(context),
+                              ),
+                              centerTitle: true,
+                              actions: [
+                                IconButton(
+                                  onPressed: () {
+                                    Get.back();
+                                  },
+                                  icon: const Icon(
+                                    Icons.close,
+                                    color: AppColors.errorColor,
+                                  ),
+                                ),
+                              ],
+                            ),
+                            body: Container(
+                              padding: const EdgeInsets.all(20),
+                              decoration: BoxDecoration(
+                                color: AppColors.background,
+                                borderRadius: BorderRadius.circular(8),
+                              ),
+                              child: SingleChildScrollView(
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Align(
+                                      alignment: Alignment.centerRight,
+                                      child: Text(
+                                        verse.arab,
+                                        style: arabicRegular(context).copyWith(
+                                          height: 3,
+                                        ),
+                                        textAlign: TextAlign.right,
+                                      ),
+                                    ),
+                                    Text(
+                                      "Tafsir Wajiz",
+                                      style: h6Bold(context).copyWith(
+                                        fontStyle: FontStyle.italic,
+                                        fontWeight: semiBold,
+                                      ),
+                                    ),
+                                    Text(
+                                      verse.tafsir.kemenag.short,
+                                      style: bodyText1Regular(context),
+                                      textAlign: TextAlign.justify,
+                                    ),
+                                    SizedBox(
+                                      height: Get.height * 0.03,
+                                    ),
+                                    Text(
+                                      "Tafsir Tahlili",
+                                      style: h6Bold(context).copyWith(
+                                        fontStyle: FontStyle.italic,
+                                        fontWeight: semiBold,
+                                      ),
+                                    ),
+                                    Text(
+                                      verse.tafsir.kemenag.long,
+                                      style: bodyText1Regular(context),
+                                      textAlign: TextAlign.justify,
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          );
+                        },
+                      );
+                    },
                   );
                 },
               ),
