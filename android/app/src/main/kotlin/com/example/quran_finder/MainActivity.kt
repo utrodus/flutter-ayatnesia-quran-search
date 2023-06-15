@@ -1,4 +1,4 @@
-package com.utrodus.quran_finder
+package com.utrodus.ayat_nesia
 
 import io.flutter.embedding.android.FlutterActivity
 
