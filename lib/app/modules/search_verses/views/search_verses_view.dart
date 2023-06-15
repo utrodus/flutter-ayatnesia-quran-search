@@ -55,7 +55,7 @@ class SearchVersesView extends GetView<SearchVersesController> {
                         width: 8,
                       ),
                       Text(
-                        "Qur'an Finder",
+                        "AyatNesia",
                         style: h5Bold(context).copyWith(
                           color: AppColors.onPrimary,
                         ),

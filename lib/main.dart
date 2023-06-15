@@ -12,7 +12,7 @@ void main() {
   runApp(
     GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      title: "Qur'an Finder",
+      title: "AyatNesia",
       initialRoute: AppPages.initial,
       getPages: AppPages.routes,
       theme: appTheme,

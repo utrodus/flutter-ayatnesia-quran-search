@@ -26,7 +26,7 @@ class OnboardView extends GetView<OnboardController> {
                         SizedBox(height: Get.height * 0.06),
                         FadeInDown(
                           child: Text(
-                            "Qur'an Finder",
+                            "AyatNesia",
                             style: h2Bold(context).copyWith(
                               color: AppColors.primary,
                             ),

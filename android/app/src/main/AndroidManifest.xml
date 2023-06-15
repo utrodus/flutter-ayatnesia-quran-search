@@ -1,8 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.utrodus.quran_finder">
+    package="com.utrodus.ayat_nesia">
     <uses-permission android:name="android.permission.INTERNET" />
    <application
-        android:label="Qur'an Finder"
+        android:label="AyatNesia"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
