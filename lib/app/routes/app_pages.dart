@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:ayat_nesia/app/utils/prefs_manager.dart';
 
 import '../modules/all_surah/views/all_surah_view.dart';
 import '../modules/detail_surah/bindings/detail_surah_binding.dart';
@@ -14,7 +15,8 @@ part 'app_routes.dart';
 class AppPages {
   AppPages._();
 
-  static const initial = Routes.onboard;
+  static String initial =
+      PrefsManager.isFirstTime ? Routes.onboard : Routes.mainScreen;
 
   static final routes = [
     GetPage(

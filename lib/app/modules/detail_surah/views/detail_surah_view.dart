@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-import 'package:quran_finder/app/data/models/quran_model.dart';
-import 'package:quran_finder/app/res/components/verse_item_widget.dart';
-import 'package:quran_finder/app/res/constant/app_assets.dart';
-import 'package:quran_finder/app/res/constant/app_colors.dart';
-import 'package:quran_finder/app/res/theme/app_text_style.dart';
+import 'package:ayat_nesia/app/data/models/quran_model.dart';
+import 'package:ayat_nesia/app/res/components/verse_item_widget.dart';
+import 'package:ayat_nesia/app/res/constant/app_assets.dart';
+import 'package:ayat_nesia/app/res/constant/app_colors.dart';
+import 'package:ayat_nesia/app/res/theme/app_text_style.dart';
 
 import '../../../res/components/custom_appbar.dart';
 import '../controllers/detail_surah_controller.dart';

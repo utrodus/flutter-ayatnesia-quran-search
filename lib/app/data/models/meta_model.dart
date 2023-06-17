@@ -1,4 +1,4 @@
-import 'package:quran_finder/app/data/models/sajda_model.dart';
+import 'package:ayat_nesia/app/data/models/sajda_model.dart';
 
 class MetaModel {
   MetaModel({

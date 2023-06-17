@@ -1,9 +1,9 @@
 import 'dart:convert';
 
 import 'package:flutter/services.dart';
-import 'package:quran_finder/app/data/local/quran_local_data_source.dart';
-import 'package:quran_finder/app/res/constant/app_assets.dart';
-import 'package:quran_finder/app/utils/app_response.dart';
+import 'package:ayat_nesia/app/data/local/quran_local_data_source.dart';
+import 'package:ayat_nesia/app/res/constant/app_assets.dart';
+import 'package:ayat_nesia/app/utils/app_response.dart';
 
 import '../../utils/logging.dart';
 

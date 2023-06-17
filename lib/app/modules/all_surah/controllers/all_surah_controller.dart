@@ -1,8 +1,8 @@
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
-import 'package:quran_finder/app/data/models/quran_model.dart';
-import 'package:quran_finder/app/data/repository/quran_repository.dart';
-import 'package:quran_finder/app/utils/app_response.dart';
+import 'package:ayat_nesia/app/data/models/quran_model.dart';
+import 'package:ayat_nesia/app/data/repository/quran_repository.dart';
+import 'package:ayat_nesia/app/utils/app_response.dart';
 
 class AllSurahController extends GetxController {
   late QuranRepository quranRepo;

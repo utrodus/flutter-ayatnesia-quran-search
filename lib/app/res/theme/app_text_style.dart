@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import '../constant/app_colors.dart';
 
 /// Font Family Configs
-String get nunito => "Poppins";
+String get poppins => "Poppins";
 String get amiri => "Amiri";
 
 FontWeight get regular => FontWeight.w400;
@@ -110,12 +110,18 @@ TextStyle bodyText1Bold(BuildContext context) =>
     Theme.of(context).textTheme.bodyLarge!.copyWith(
           fontWeight: bold,
         );
+TextStyle bodyText1SemiBold(BuildContext context) =>
+    Theme.of(context).textTheme.bodyLarge!.copyWith(
+          fontWeight: semiBold,
+        );
 
 TextStyle bodyText2Regular(BuildContext context) =>
     Theme.of(context).textTheme.bodyMedium!.copyWith(
           color: AppColors.onSecondary,
         );
 
+TextStyle bodyText2SemiBold(BuildContext context) =>
+    Theme.of(context).textTheme.bodyMedium!.copyWith(fontWeight: semiBold);
 TextStyle bodyText2Bold(BuildContext context) =>
     Theme.of(context).textTheme.bodyMedium!.copyWith(fontWeight: bold);
 

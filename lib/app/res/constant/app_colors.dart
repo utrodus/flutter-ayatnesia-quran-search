@@ -11,6 +11,7 @@ class AppColors {
   static const Color onSurface = Colors.white;
   static const Color backgroundVariant = Color(0xffF7FAFD);
   static const Color grey = Color(0xff5F5F5F);
+  static const Color darkGreen = Color.fromARGB(255, 11, 110, 87);
   static const Color lightGreen = Color(0xffA6E9D4);
   static const Color lightRed = Color(0xffF54749);
   static const Color successColor = Color(0xff5CC8A6);

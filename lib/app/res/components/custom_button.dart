@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:quran_finder/app/res/constant/app_colors.dart';
-import 'package:quran_finder/app/res/theme/app_text_style.dart';
+import 'package:ayat_nesia/app/res/constant/app_colors.dart';
+import 'package:ayat_nesia/app/res/theme/app_text_style.dart';
 
 class CustomButton extends StatelessWidget {
   final BorderRadiusGeometry borderRadius;

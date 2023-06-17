@@ -3,10 +3,10 @@ import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 
 import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
-import 'package:quran_finder/app/data/models/quran_model.dart';
-import 'package:quran_finder/app/res/components/custom_appbar.dart';
-import 'package:quran_finder/app/routes/app_pages.dart';
-import 'package:quran_finder/app/utils/app_response.dart';
+import 'package:ayat_nesia/app/data/models/quran_model.dart';
+import 'package:ayat_nesia/app/res/components/custom_appbar.dart';
+import 'package:ayat_nesia/app/routes/app_pages.dart';
+import 'package:ayat_nesia/app/utils/app_response.dart';
 
 import '../../../res/constant/app_assets.dart';
 import '../../../res/constant/app_colors.dart';
@@ -86,7 +86,7 @@ class AllSurahView extends GetView<AllSurahController> {
                           ),
                           const SizedBox(height: 8),
                           Text(
-                            "Al Qur'an Kemenag RI,\nTanzil, Al-Quran-ID-API",
+                            "Al Qur'an Kemenag RI",
                             style: h6Bold(context).copyWith(
                               color: AppColors.onPrimary,
                               fontWeight: medium,

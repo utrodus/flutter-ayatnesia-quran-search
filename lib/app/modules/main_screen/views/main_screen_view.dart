@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
-import 'package:quran_finder/app/modules/search_verses/views/search_verses_view.dart';
-import 'package:quran_finder/app/res/constant/app_colors.dart';
-import 'package:quran_finder/app/res/theme/app_text_style.dart';
+import 'package:ayat_nesia/app/modules/search_verses/views/search_verses_view.dart';
+import 'package:ayat_nesia/app/res/constant/app_colors.dart';
+import 'package:ayat_nesia/app/res/theme/app_text_style.dart';
 
 import '../../all_surah/views/all_surah_view.dart';
 import '../controllers/main_screen_controller.dart';

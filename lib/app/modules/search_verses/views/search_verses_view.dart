@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
-import 'package:quran_finder/app/res/constant/app_assets.dart';
-import 'package:quran_finder/app/res/constant/app_colors.dart';
-import 'package:quran_finder/app/res/theme/app_text_style.dart';
+import 'package:ayat_nesia/app/res/constant/app_assets.dart';
+import 'package:ayat_nesia/app/res/constant/app_colors.dart';
+import 'package:ayat_nesia/app/res/theme/app_text_style.dart';
 
 import '../controllers/search_verses_controller.dart';
+import 'widgets/search_filter.dart';
 
 class SearchVersesView extends GetView<SearchVersesController> {
   const SearchVersesView({Key? key}) : super(key: key);
@@ -42,6 +43,7 @@ class SearchVersesView extends GetView<SearchVersesController> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.start,
+                mainAxisSize: MainAxisSize.min,
                 children: [
                   const Spacer(),
                   Row(
@@ -64,41 +66,72 @@ class SearchVersesView extends GetView<SearchVersesController> {
                   ),
                   const SizedBox(height: 10),
                   Text(
-                    "Solusi untuk Menemukan Ayat\nAl Qur’an sesuai kebutuhanmu",
-                    style: h5Bold(context).copyWith(
+                    "Pencarian Relevansi Teks Pada\nTerjemahan Ayat Al-Qur'an",
+                    style: bodyText1Regular(context).copyWith(
                       color: AppColors.onPrimary,
-                      fontWeight: medium,
+                      fontWeight: bold,
                     ),
                   ),
                   const SizedBox(height: 15),
-                  Obx(() => TextFormField(
-                        controller: controller.searchTextFieldController,
-                        focusNode: controller.searchFocusNode,
-                        decoration: InputDecoration(
-                          prefixIcon: const Icon(Ionicons.search),
-                          hintText: "Masukkan kata kunci",
-                          hintStyle: bodyText1Regular(context).copyWith(
-                            color: AppColors.secondary.withOpacity(0.5),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: Obx(
+                          () => TextFormField(
+                            controller: controller.searchTextFieldController,
+                            focusNode: controller.searchFocusNode,
+                            decoration: InputDecoration(
+                              prefixIcon: const Icon(Ionicons.search),
+                              hintText: "Masukkan kata kunci",
+                              hintStyle: bodyText1Regular(context).copyWith(
+                                color: AppColors.secondary.withOpacity(0.8),
+                              ),
+                              suffixIcon: controller.searchQuery.isEmpty
+                                  ? null
+                                  : GestureDetector(
+                                      onTap: () => controller
+                                          .onTapClearSearchTextField(),
+                                      child: Icon(
+                                        Icons.close_rounded,
+                                        size: 20,
+                                        color:
+                                            Theme.of(context).colorScheme.error,
+                                      ),
+                                    ),
+                            ),
+                            textInputAction: TextInputAction.search,
+                            style: bodyText1Bold(context),
+                            onChanged: (value) =>
+                                controller.onChangedSearchTextField(value),
+                            onFieldSubmitted: (_) =>
+                                controller.onFieldSubmittedSearchTextField(),
                           ),
-                          suffixIcon: controller.searchQuery.isEmpty
-                              ? null
-                              : GestureDetector(
-                                  onTap: () =>
-                                      controller.onTapClearSearchTextField(),
-                                  child: Icon(
-                                    Icons.close_rounded,
-                                    size: 20,
-                                    color: Theme.of(context).colorScheme.error,
-                                  ),
-                                ),
                         ),
-                        textInputAction: TextInputAction.search,
-                        style: bodyText1Bold(context),
-                        onChanged: (value) =>
-                            controller.onChangedSearchTextField(value),
-                        onFieldSubmitted: (_) =>
-                            controller.onFieldSubmittedSearchTextField(),
-                      )),
+                      ),
+                      const SizedBox(width: 10),
+                      ElevatedButton(
+                        onPressed: () => showFilterDialog(
+                          context,
+                          controller,
+                        ),
+                        style: ElevatedButton.styleFrom(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 12, vertical: 10),
+                          backgroundColor: AppColors.darkGreen,
+                          visualDensity: VisualDensity.compact,
+                          minimumSize: const Size(
+                            0,
+                            55,
+                          ),
+                        ),
+                        child: const Icon(
+                          Ionicons.options,
+                          color: AppColors.background,
+                          size: 26,
+                        ),
+                      ),
+                    ],
+                  ),
                   const Spacer(),
                 ],
               ),
@@ -135,13 +168,13 @@ class SearchVersesView extends GetView<SearchVersesController> {
                 case AppState.loading:
                   return Container();
                 case AppState.success:
-                  return Padding(
-                    padding: const EdgeInsets.symmetric(
+                  return const Padding(
+                    padding: EdgeInsets.symmetric(
                       horizontal: 25.0,
                       vertical: 16.0,
                     ),
                     child: Column(
-                      children: const [
+                      children: [
                         Text("Hasil Pencarian Ayat: 0 Ayat"),
                       ],
                     ),

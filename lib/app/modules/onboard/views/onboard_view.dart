@@ -1,11 +1,10 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:quran_finder/app/res/components/custom_button.dart';
-import 'package:quran_finder/app/res/constant/app_assets.dart';
-import 'package:quran_finder/app/res/constant/app_colors.dart';
-import 'package:quran_finder/app/res/theme/app_text_style.dart';
-import 'package:quran_finder/app/routes/app_pages.dart';
+import 'package:ayat_nesia/app/res/components/custom_button.dart';
+import 'package:ayat_nesia/app/res/constant/app_assets.dart';
+import 'package:ayat_nesia/app/res/constant/app_colors.dart';
+import 'package:ayat_nesia/app/res/theme/app_text_style.dart';
 import '../controllers/onboard_controller.dart';
 
 class OnboardView extends GetView<OnboardController> {
@@ -54,12 +53,8 @@ class OnboardView extends GetView<OnboardController> {
                           child: CustomButton(
                             width: Get.width * 0.5,
                             height: 51,
-                            onPressed: () {
-                              Get.offAllNamed(
-                                Routes.mainScreen,
-                              );
-                            },
-                            title: "Get Started",
+                            onPressed: () => controller.onTapGetStarted(),
+                            title: "Mulai Sekarang",
                           ),
                         ),
                         const Spacer(),

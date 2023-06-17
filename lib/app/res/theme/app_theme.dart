@@ -4,20 +4,9 @@ import '../constant/app_colors.dart';
 import 'app_text_style.dart';
 
 ThemeData get appTheme => ThemeData(
-      fontFamily: nunito,
-      scaffoldBackgroundColor: AppColors.background,
-      indicatorColor: AppColors.secondary,
-      primaryColor: AppColors.primary,
-      colorScheme: const ColorScheme.light().copyWith(
-        primary: AppColors.primary,
-        secondary: AppColors.secondary,
-        onPrimary: AppColors.onPrimary,
-        onSecondary: AppColors.onSecondary,
-        background: AppColors.background,
-        onSurface: AppColors.onSurface,
-        error: AppColors.errorColor,
-        tertiary: AppColors.grey,
-      ),
+      useMaterial3: true,
+      fontFamily: poppins,
+      colorSchemeSeed: AppColors.primary,
       textTheme: textTheme,
       elevatedButtonTheme: elevatedButtonThemeData,
       outlinedButtonTheme: outlinedButtonThemeData,
@@ -38,7 +27,8 @@ AppBarTheme get appBarThemeData => const AppBarTheme(
 
 ElevatedButtonThemeData get elevatedButtonThemeData => ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
-        backgroundColor: AppColors.secondary,
+        backgroundColor: AppColors.primary,
+        foregroundColor: AppColors.onPrimary,
         padding: const EdgeInsets.symmetric(
           vertical: 13,
           horizontal: 24,
@@ -47,6 +37,7 @@ ElevatedButtonThemeData get elevatedButtonThemeData => ElevatedButtonThemeData(
           borderRadius: BorderRadius.circular(12),
         ),
         elevation: 0,
+        minimumSize: const Size(100, 44),
       ),
     );
 
