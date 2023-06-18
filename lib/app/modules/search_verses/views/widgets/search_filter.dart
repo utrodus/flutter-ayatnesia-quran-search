@@ -176,7 +176,7 @@ showFilterDialog(
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10),
                   ),
-                  minimumSize: Size(Get.width * 0.3, 44),
+                  minimumSize: Size(Get.width * 0.9, 44),
                   padding: EdgeInsets.symmetric(
                     horizontal: Get.width * 0.25,
                     vertical: 12,
