@@ -2,7 +2,6 @@ import 'package:ayat_nesia/src/features/all_surah/datasource/model/all_surah_mod
 import 'package:dartz/dartz.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
 
 import '../datasource/remote/all_surah_remote_datasource.dart';
 
@@ -30,6 +29,9 @@ class AllSurahController extends GetxController
 
   void onChangedSearchTextField(String value) {
     searchSurahQuery.value = value;
+    if (searchSurahQuery.value.isEmpty) {
+      change(allSurahData, status: RxStatus.success());
+    }
   }
 
   void onFieldSubmittedSearchTextField() {
@@ -63,7 +65,13 @@ class AllSurahController extends GetxController
         var surahName = element.name!.toLowerCase();
         return surahName.contains(searchSurahQuery.value.toLowerCase());
       }).toList();
-      change(resultsSearchByName, status: RxStatus.success());
+      if (resultsSearchByName.isEmpty) {
+        change([], status: RxStatus.empty());
+      } else {
+        change(resultsSearchByName, status: RxStatus.success());
+      }
+    } else {
+      change([], status: RxStatus.empty());
     }
   }
 

@@ -1,3 +1,4 @@
+import 'package:ayat_nesia/src/core/res/constant/app_assets.dart';
 import 'package:ayat_nesia/src/features/all_surah/datasource/model/all_surah_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
@@ -5,7 +6,6 @@ import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
 
-import '../../../core/res/constant/app_assets.dart';
 import '../../../core/res/constant/app_colors.dart';
 import '../../../core/res/theme/app_text_style.dart';
 import '../../../routes/app_pages.dart';
@@ -108,6 +108,33 @@ class AllSurahView extends GetView<AllSurahController> {
                     );
                   },
                 ),
+              ),
+              onLoading: const Center(
+                child: CircularProgressIndicator(),
+              ),
+              onEmpty: Column(
+                children: [
+                  SizedBox(
+                    height: Get.height * 0.1,
+                  ),
+                  Image(
+                    image: const AssetImage(
+                      AppAssets.imgEmptySearch,
+                    ),
+                    width: Get.width * 0.5,
+                  ),
+                  SizedBox(
+                    height: Get.height * 0.03,
+                  ),
+                  Center(
+                    child: Text(
+                      "Surah tidak ditemukan",
+                      style: h5Bold(context).copyWith(
+                        fontWeight: medium,
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ),
           ),
