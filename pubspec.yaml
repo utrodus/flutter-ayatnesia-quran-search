@@ -18,6 +18,7 @@ dependencies:
   get_storage: 2.1.1
   ionicons: ^0.2.2
   logger: ^1.1.0
+  lottie: ^2.4.0
   shimmer: ^2.0.0
 
 dev_dependencies:
@@ -32,7 +33,7 @@ dev_dependencies:
 # 3) flutter pub run flutter_native_splash:create
 flutter_native_splash:
   color: '#ffffff'
-  image: assets/img/img_logo_splash.png
+  image: assets/img/img_logo_green.png
   android: true
   ios: true
   fullscreen: true
@@ -42,7 +43,6 @@ flutter:
   assets:
     - assets/
     - assets/img/
-    - assets/json/
   fonts:
     - family: Poppins
       fonts:
@@ -54,9 +54,8 @@ flutter:
           weight: 500
         - asset: assets/fonts/Poppins-Regular.ttf
           weight: 400
-    - family: Amiri
+    - family: LPMQ-IsepMisbah
       fonts:
-        - asset: assets/fonts/Amiri-Bold.ttf
-          weight: 700
-        - asset: assets/fonts/Amiri-Regular.ttf
+        - asset: assets/fonts/LPMQ-IsepMisbah.ttf
           weight: 400
+

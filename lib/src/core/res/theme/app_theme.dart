@@ -21,7 +21,7 @@ AppBarTheme get appBarThemeData => const AppBarTheme(
         statusBarColor: AppColors.primary,
       ),
       centerTitle: true,
-      backgroundColor: AppColors.background,
+      backgroundColor: AppColors.primary,
       elevation: 1,
     );
 

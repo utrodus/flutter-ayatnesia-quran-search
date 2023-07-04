@@ -34,7 +34,7 @@ class VerseItemWidget extends StatelessWidget {
           ),
         ),
         SizedBox(
-          height: Get.height * 0.01,
+          height: Get.height * 0.03,
         ),
         Align(
           alignment: Alignment.centerRight,
@@ -42,7 +42,7 @@ class VerseItemWidget extends StatelessWidget {
             verseArabic,
             textAlign: TextAlign.right,
             style: arabicRegular(context).copyWith(
-              height: 3,
+              height: 2,
             ),
           ),
         ),

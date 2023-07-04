@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+
+import '../constant/app_colors.dart';
 //Add this CustomPaint widget to the Widget Tree
 // CustomPaint(
 //     size = Size(100, (100*1).toDouble()), //You can Replace [WIDTH] with your desired width for Custom Paint and height will be calculated automatically
@@ -167,7 +169,7 @@ class CustomBorderSurahItem extends CustomPainter {
     path_0.close();
 
     Paint paint0Fill = Paint()..style = PaintingStyle.fill;
-    paint0Fill.color = const Color(0xff16A885).withOpacity(1.0);
+    paint0Fill.color = AppColors.primary;
     canvas.drawPath(path_0, paint0Fill);
   }
 

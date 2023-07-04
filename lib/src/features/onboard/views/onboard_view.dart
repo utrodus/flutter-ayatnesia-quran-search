@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../core/res/components/custom_button.dart';
 import '../../../core/res/constant/app_assets.dart';
-import '../../../core/res/constant/app_colors.dart';
 import '../../../core/res/theme/app_text_style.dart';
 import '../controllers/onboard_controller.dart';
 
@@ -24,27 +23,28 @@ class OnboardView extends GetView<OnboardController> {
                       children: <Widget>[
                         SizedBox(height: Get.height * 0.06),
                         FadeInDown(
-                          child: Text(
-                            "AyatNesia",
-                            style: h2Bold(context).copyWith(
-                              color: AppColors.primary,
+                          child: Image(
+                            image: const AssetImage(AppAssets.imgLogoGreen),
+                            width: Get.width * 0.45,
+                          ),
+                        ),
+                        const SizedBox(height: 25),
+                        FadeInDown(
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 40),
+                            child: Text(
+                              "Pencarian Relevansi Teks Terjemahan Ayat\nAl-Qur'an Dengan Pengukuran Kemiripan Leksikal & Semantik",
+                              style: bodyText2Regular(context).copyWith(),
+                              textAlign: TextAlign.center,
                             ),
                           ),
                         ),
-                        const SizedBox(height: 19),
-                        FadeInDown(
-                          child: Text(
-                            "Temukan Ayat Al Qur’an Sesuai\nKebutuhan melalui Fitur Pencarian\nyang kami Sediakan",
-                            style: bodyText1Regular(context).copyWith(),
-                            textAlign: TextAlign.center,
-                          ),
-                        ),
-                        const SizedBox(height: 39),
+                        const SizedBox(height: 45),
                         FadeInUpBig(
                           child: Center(
                             child: Image(
                               image: const AssetImage(AppAssets.imgOnboard),
-                              width: Get.width * 0.8,
+                              width: Get.width * 0.7,
                             ),
                           ),
                         ),

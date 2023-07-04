@@ -3,7 +3,7 @@ import '../constant/app_colors.dart';
 
 /// Font Family Configs
 String get poppins => "Poppins";
-String get amiri => "Amiri";
+String get lpmqIsepMisbah => "LPMQ-IsepMisbah";
 
 FontWeight get regular => FontWeight.w400;
 FontWeight get medium => FontWeight.w500;
@@ -91,16 +91,10 @@ TextStyle h5Bold(BuildContext context) =>
 TextStyle h6Bold(BuildContext context) =>
     Theme.of(context).textTheme.titleLarge!;
 
-TextStyle arabicH2Bold(BuildContext context) =>
-    Theme.of(context).textTheme.displayMedium!.copyWith(
-          fontWeight: bold,
-          fontFamily: amiri,
-        );
-
 TextStyle arabicRegular(BuildContext context) =>
     Theme.of(context).textTheme.displayMedium!.copyWith(
           fontWeight: regular,
-          fontFamily: amiri,
+          fontFamily: lpmqIsepMisbah,
         );
 
 TextStyle bodyText1Regular(BuildContext context) =>

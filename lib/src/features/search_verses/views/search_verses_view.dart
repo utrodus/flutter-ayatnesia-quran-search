@@ -23,7 +23,7 @@ class SearchVersesView extends GetView<SearchVersesController> {
                 horizontal: 17,
               ),
               width: Get.width,
-              height: Get.height * 0.24,
+              height: Get.height * 0.25,
               decoration: BoxDecoration(
                 gradient: LinearGradient(
                   colors: AppColors.primaryGradient,
@@ -45,23 +45,9 @@ class SearchVersesView extends GetView<SearchVersesController> {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   const Spacer(),
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Image(
-                        image: const AssetImage(AppAssets.imgLogo),
-                        width: Get.width * 0.08,
-                      ),
-                      const SizedBox(
-                        width: 8,
-                      ),
-                      Text(
-                        "AyatNesia",
-                        style: h5Bold(context).copyWith(
-                          color: AppColors.onPrimary,
-                        ),
-                      ),
-                    ],
+                  Image(
+                    image: const AssetImage(AppAssets.imgLogoWhite),
+                    width: Get.width * 0.35,
                   ),
                   const SizedBox(height: 10),
                   Text(
@@ -99,7 +85,7 @@ class SearchVersesView extends GetView<SearchVersesController> {
                                     ),
                             ),
                             textInputAction: TextInputAction.search,
-                            style: bodyText1Bold(context),
+                            style: bodyText1Regular(context),
                             onChanged: (value) =>
                                 controller.onChangedSearchTextField(value),
                             onFieldSubmitted: (_) =>

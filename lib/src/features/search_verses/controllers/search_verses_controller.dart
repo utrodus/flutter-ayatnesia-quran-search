@@ -26,7 +26,7 @@ class SearchVersesController extends GetxController {
 
   void onFieldSubmittedSearchTextField() {
     if (searchQuery.value.isNotEmpty) {
-      searchFocusNode.unfocus();
+      // searchFocusNode.unfocus();
     }
   }
 

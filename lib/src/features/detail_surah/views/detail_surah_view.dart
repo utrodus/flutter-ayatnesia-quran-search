@@ -105,7 +105,7 @@ class DetailSurahView extends GetView<DetailSurahController> {
                     height: Get.height * 0.05,
                   ),
                   Visibility(
-                    visible: surahData.id != 9,
+                    visible: surahData.id != 9 && surahData.id != 1,
                     child: Column(
                       children: [
                         Align(
