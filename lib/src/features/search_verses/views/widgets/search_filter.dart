@@ -94,42 +94,6 @@ showFilterDialog(
                         ),
                         const SizedBox(height: 20),
                         Text(
-                          "Pilih Metode Pengukuran Kemiripan:",
-                          style: bodyText2SemiBold(context),
-                        ),
-                        const SizedBox(height: 10),
-                        Wrap(
-                          crossAxisAlignment: WrapCrossAlignment.center,
-                          spacing: 10,
-                          alignment: WrapAlignment.start,
-                          children: controller.listMethods
-                              .map(
-                                (item) => InputChip(
-                                  padding: const EdgeInsets.symmetric(
-                                    horizontal: 3,
-                                    vertical: 5,
-                                  ),
-                                  selectedColor: AppColors.lightGreen,
-                                  labelStyle:
-                                      subtitle1Regular(context).copyWith(
-                                    fontWeight: medium,
-                                    color: item.isSelected
-                                        ? AppColors.darkGreen
-                                        : AppColors.grey,
-                                  ),
-                                  label: Text(
-                                    item.name,
-                                  ),
-                                  selected: item.isSelected,
-                                  onPressed: () {
-                                    controller.onTapMethod(item);
-                                  },
-                                ),
-                              )
-                              .toList(),
-                        ),
-                        const SizedBox(height: 20),
-                        Text(
                           "Tampilkan Hasil Pencarian Berdasarkan:",
                           style: bodyText2SemiBold(context),
                         ),
@@ -182,7 +146,10 @@ showFilterDialog(
                     vertical: 12,
                   ),
                 ),
-                onPressed: () => Get.back(),
+                onPressed: () {
+                  controller.onFieldSubmittedSearchTextField();
+                  Navigator.pop(context);
+                },
                 child: Text(
                   "Terapkan",
                   style: h5Bold(context).copyWith(
@@ -200,7 +167,7 @@ showFilterDialog(
     isScrollControlled: true,
     enableDrag: false,
     constraints: BoxConstraints(
-      maxHeight: Get.height * 0.75,
+      maxHeight: Get.height * 0.57,
     ),
     isDismissible: false,
   );

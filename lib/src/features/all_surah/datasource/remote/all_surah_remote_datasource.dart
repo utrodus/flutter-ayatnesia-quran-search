@@ -7,7 +7,7 @@ import '../model/all_surah_model.dart';
 class AllSurahRemoteDataSource extends ApiBase<AllSurahModel> {
   //Get surah list
   Future<Either<String, List<AllSurahModel>>> getUserList() async {
-    Future<Either<String, List<AllSurahModel>>> result = makeGetRequestForList(
+    Future<Either<String, List<AllSurahModel>>> result = makeRequestForList(
       dioClient.dio.get(ApiConfig.allSurah),
       AllSurahModel.fromJson,
     );

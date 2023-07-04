@@ -2,15 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../datasource/model/filter_model.dart';
+import '../datasource/model/search_verse_result_model.dart';
+import '../datasource/remote/search_verse_remote_datasource.dart';
+import 'package:flutter/services.dart';
 
-enum AppState { initial, loading, success, error }
-
-class SearchVersesController extends GetxController {
-  late Rx<AppState> appState;
-  SearchVersesController() {
-    appState = AppState.initial.obs;
-  }
+class SearchVersesController extends GetxController
+    with StateMixin<SearchVerseResultModel> {
   TextEditingController searchTextFieldController = TextEditingController();
+  SearchVerseRemoteDataSource searchVerseRemoteDataSource =
+      SearchVerseRemoteDataSource();
   FocusNode searchFocusNode = FocusNode();
   late RxString searchQuery = ''.obs;
 
@@ -18,6 +18,8 @@ class SearchVersesController extends GetxController {
     searchTextFieldController.clear();
     searchQuery.value = '';
     searchFocusNode.requestFocus();
+    change(SearchVerseResultModel(executionTime: 0.0, results: []),
+        status: RxStatus.success());
   }
 
   void onChangedSearchTextField(String value) {
@@ -26,7 +28,21 @@ class SearchVersesController extends GetxController {
 
   void onFieldSubmittedSearchTextField() {
     if (searchQuery.value.isNotEmpty) {
-      // searchFocusNode.unfocus();
+      var selectedListSorted =
+          listSorted.firstWhere((element) => element.isSelected == true).value;
+
+      var selectedListMethod =
+          listMethods.firstWhere((element) => element.isSelected == true).value;
+
+      var selectedListTopRelevance = listTopRelevance
+          .firstWhere((element) => element.isSelected == true)
+          .value;
+      debugPrint('searchQuery.value: ${searchQuery.value}');
+      debugPrint('selectedListSorted: $selectedListSorted');
+      debugPrint('selectedListMethod: $selectedListMethod');
+      debugPrint('selectedListTopRelevance: $selectedListTopRelevance');
+      searchFocusNode.unfocus();
+      searchVerse();
     }
   }
 
@@ -49,13 +65,9 @@ class SearchVersesController extends GetxController {
 
   List<FilterModel> listMethods = [
     FilterModel(
-        name: 'Pengukuran Leksikal', value: 'lexical', isSelected: false),
-    FilterModel(
-        name: 'Pengukuran Semantik', value: 'semantic', isSelected: false),
-    FilterModel(
-        name: 'Pengukuran Lexical & Semantik',
-        value: 'combinations',
-        isSelected: true),
+        name: 'Lexical & Semantik', value: 'combination', isSelected: true),
+    FilterModel(name: 'Leksikal', value: 'lexical', isSelected: false),
+    FilterModel(name: 'Semantik', value: 'semantic', isSelected: false),
   ];
 
   onTapMethod(FilterModel filterModel) {
@@ -72,8 +84,8 @@ class SearchVersesController extends GetxController {
   List<FilterModel> listTopRelevance = [
     FilterModel(name: '5 Nilai Tertinggi', value: '5', isSelected: false),
     FilterModel(name: '10 Nilai Tertinggi', value: '10', isSelected: false),
-    FilterModel(name: '15 Nilai Tertinggi', value: '15', isSelected: false),
-    FilterModel(name: 'Tampilkan Semua', value: 'all', isSelected: true),
+    FilterModel(name: '15 Nilai Tertinggi', value: '15', isSelected: true),
+    FilterModel(name: 'Tampilkan Semua', value: 'all', isSelected: false),
   ];
 
   onTapTopRelevance(FilterModel filterModel) {
@@ -85,5 +97,53 @@ class SearchVersesController extends GetxController {
       }
     }
     update();
+  }
+
+  Future<void> searchVerse() async {
+    change(null, status: RxStatus.loading());
+    var selectedListSorted =
+        listSorted.firstWhere((element) => element.isSelected == true).value;
+
+    var selectedListMethod =
+        listMethods.firstWhere((element) => element.isSelected == true).value;
+
+    var selectedListTopRelevance = listTopRelevance
+        .firstWhere((element) => element.isSelected == true)
+        .value;
+    debugPrint('searchQuery.value: ${searchQuery.value}');
+    debugPrint('selectedListSorted: $selectedListSorted');
+    debugPrint('selectedListMethod: $selectedListMethod');
+    debugPrint('selectedListTopRelevance: $selectedListTopRelevance');
+
+    var result = await searchVerseRemoteDataSource.searchVerse(
+      query: searchQuery.value,
+      measureType: selectedListMethod,
+      topRelevance: selectedListTopRelevance,
+    );
+
+    result.fold(
+      (failure) => change(null, status: RxStatus.error(failure)),
+      (response) => change(response, status: RxStatus.success()),
+    );
+  }
+
+  void copyVerses({
+    required String arabic,
+    required String translation,
+    required String tafsir,
+    required String surahName,
+    required num surahId,
+    required num numberInSurah,
+  }) {
+    String textToCopy =
+        'Allah Subhanahu wa Ta\'ala berfirman:\n\n$arabic\n\n$translation\n\n$surahName [$surahId]:$numberInSurah\n\nTafsir Ringkas Kemenag:\n$tafsir\n\nDisalin dari: AyatNesia dan data berasal dari: https://quran.kemenag.go.id/';
+    Clipboard.setData(ClipboardData(text: textToCopy));
+  }
+
+  @override
+  void onInit() {
+    super.onInit();
+    change(SearchVerseResultModel(executionTime: 0.0, results: []),
+        status: RxStatus.success());
   }
 }

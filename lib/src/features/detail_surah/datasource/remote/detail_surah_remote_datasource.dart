@@ -8,7 +8,7 @@ class DetailSurahRemoteDataSource extends ApiBase<DetailSurahModel> {
   //Get surah list
   Future<Either<String, DetailSurahModel>> getDetailSurah(num id) async {
     Future<Either<String, DetailSurahModel>> result =
-        makeGetRequestForSingleObject(
+        makeRequestForSingleObject(
       dioClient.dio.get("${ApiConfig.detailSurah}/$id"),
       DetailSurahModel.fromJson,
     );
