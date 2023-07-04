@@ -22,7 +22,7 @@ AppBarTheme get appBarThemeData => const AppBarTheme(
       ),
       centerTitle: true,
       backgroundColor: AppColors.primary,
-      elevation: 1,
+      elevation: 0,
     );
 
 ElevatedButtonThemeData get elevatedButtonThemeData => ElevatedButtonThemeData(
@@ -36,7 +36,6 @@ ElevatedButtonThemeData get elevatedButtonThemeData => ElevatedButtonThemeData(
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(12),
         ),
-        elevation: 0,
         minimumSize: const Size(100, 44),
       ),
     );
@@ -45,10 +44,6 @@ OutlinedButtonThemeData get outlinedButtonThemeData => OutlinedButtonThemeData(
       style: OutlinedButton.styleFrom(
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(12),
-        ),
-        side: const BorderSide(
-          color: AppColors.primary,
-          width: 1,
         ),
         elevation: 0,
       ),

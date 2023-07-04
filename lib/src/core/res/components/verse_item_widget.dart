@@ -12,14 +12,16 @@ class VerseItemWidget extends StatelessWidget {
     required this.number,
     required this.verseArabic,
     required this.verseTranslation,
-    this.onPressed,
+    this.onPressedReadTafsir,
+    this.onPressedCopyVerses,
   });
 
   final String name;
   final String number;
   final String verseArabic;
   final String verseTranslation;
-  final void Function()? onPressed;
+  final void Function()? onPressedReadTafsir;
+  final void Function()? onPressedCopyVerses;
 
   @override
   Widget build(BuildContext context) {
@@ -60,35 +62,70 @@ class VerseItemWidget extends StatelessWidget {
           style: bodyText1Regular(context),
         ),
         SizedBox(
-          height: Get.height * 0.02,
+          height: Get.height * 0.025,
         ),
-        Align(
-          alignment: Alignment.centerRight,
-          child: OutlinedButton.icon(
-            style: OutlinedButton.styleFrom(
-              visualDensity: VisualDensity.compact,
-              padding: const EdgeInsets.symmetric(
-                horizontal: 20,
-                vertical: 15,
+        Row(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            OutlinedButton.icon(
+              style: OutlinedButton.styleFrom(
+                visualDensity: VisualDensity.compact,
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 20,
+                  vertical: 18,
+                ),
+                side: const BorderSide(
+                  color: AppColors.darkGreen,
+                  width: 1,
+                ),
+              ),
+              onPressed: onPressedReadTafsir,
+              icon: const Image(
+                image: AssetImage(
+                  AppAssets.icBookWhite,
+                ),
+                color: AppColors.darkGreen,
+                width: 20,
+                height: 20,
+              ),
+              label: Text(
+                "Baca Tafsir",
+                style: subtitle1Bold(context).copyWith(
+                  color: AppColors.darkGreen,
+                  fontWeight: semiBold,
+                ),
               ),
             ),
-            onPressed: onPressed,
-            icon: const Image(
-              image: AssetImage(
-                AppAssets.icBookWhite,
-              ),
-              color: AppColors.primary,
-              width: 20,
-              height: 20,
+            SizedBox(
+              width: Get.width * 0.04,
             ),
-            label: Text(
-              "Tafsir",
-              style: subtitle1Bold(context).copyWith(
-                color: AppColors.primary,
-                fontWeight: semiBold,
+            OutlinedButton.icon(
+              style: OutlinedButton.styleFrom(
+                visualDensity: VisualDensity.compact,
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 20,
+                  vertical: 18,
+                ),
+                side: const BorderSide(
+                  color: AppColors.grey,
+                  width: 1,
+                ),
+              ),
+              onPressed: onPressedCopyVerses,
+              icon: const Icon(
+                Icons.copy,
+                color: AppColors.grey,
+                size: 18,
+              ),
+              label: Text(
+                "Salin Ayat",
+                style: subtitle1Bold(context).copyWith(
+                  color: AppColors.grey,
+                  fontWeight: semiBold,
+                ),
               ),
             ),
-          ),
+          ],
         ),
         SizedBox(
           height: Get.height * 0.02,

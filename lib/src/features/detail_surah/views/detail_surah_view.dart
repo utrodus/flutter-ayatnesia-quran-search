@@ -134,7 +134,21 @@ class DetailSurahView extends GetView<DetailSurahController> {
                         number: verse.numberInSurah.toString(),
                         verseArabic: verse.arabic ?? "-",
                         verseTranslation: verse.translation ?? "-",
-                        onPressed: () {
+                        onPressedCopyVerses: () {
+                          controller.copyVerses(
+                            surahId: surahData.id!,
+                            surahName: surahData.name!,
+                            numberInSurah: verse.numberInSurah!,
+                            arabic: verse.arabic!,
+                            tafsir: verse.tafsir!,
+                            translation: verse.translation!,
+                          );
+                          var snackBar = SnackBar(
+                              content: Text(
+                                  '${surahData.name!} Ayat ${verse.numberInSurah!} berhasil disalin'));
+                          ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                        },
+                        onPressedReadTafsir: () {
                           Get.generalDialog(
                             pageBuilder: (BuildContext context,
                                 Animation<double> animation,
@@ -143,20 +157,20 @@ class DetailSurahView extends GetView<DetailSurahController> {
                                 appBar: AppBar(
                                   title: Text(
                                     "Tafsir ${surahData.name} : ${verse.numberInSurah}",
-                                    style: h5Bold(context),
+                                    style: h5Bold(context).copyWith(
+                                      color: AppColors.background,
+                                    ),
                                   ),
                                   centerTitle: true,
-                                  actions: [
-                                    IconButton(
-                                      onPressed: () {
-                                        Get.back();
-                                      },
-                                      icon: const Icon(
-                                        Icons.close,
-                                        color: AppColors.errorColor,
-                                      ),
+                                  leading: IconButton(
+                                    onPressed: () {
+                                      Get.back();
+                                    },
+                                    icon: const Icon(
+                                      Icons.arrow_back_ios_new_rounded,
+                                      color: AppColors.background,
                                     ),
-                                  ],
+                                  ),
                                 ),
                                 body: Container(
                                   padding: const EdgeInsets.all(20),
@@ -171,19 +185,25 @@ class DetailSurahView extends GetView<DetailSurahController> {
                                       crossAxisAlignment:
                                           CrossAxisAlignment.start,
                                       children: [
+                                        SizedBox(
+                                          height: Get.height * 0.03,
+                                        ),
                                         Align(
                                           alignment: Alignment.centerRight,
                                           child: Text(
                                             verse.arabic ?? "-",
                                             style:
                                                 arabicRegular(context).copyWith(
-                                              height: 3,
+                                              height: 2,
                                             ),
                                             textAlign: TextAlign.right,
                                           ),
                                         ),
+                                        SizedBox(
+                                          height: Get.height * 0.05,
+                                        ),
                                         Text(
-                                          "Tafsir Ringkas Kemenag",
+                                          "Tafsir Ringkas Kemenag:",
                                           style: h6Bold(context).copyWith(
                                             fontStyle: FontStyle.italic,
                                             fontWeight: semiBold,

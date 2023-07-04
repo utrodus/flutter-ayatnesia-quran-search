@@ -30,6 +30,7 @@ PreferredSizeWidget customAppBar({
             fontWeight: semiBold,
           ),
         ),
+        elevation: 0,
         flexibleSpace: Container(
           decoration: BoxDecoration(
             gradient: LinearGradient(
