@@ -34,7 +34,7 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.detailSurah,
-      page: () => DetailSurahView(),
+      page: () => const DetailSurahView(),
       binding: DetailSurahBinding(),
       transition: Transition.cupertino,
       transitionDuration: const Duration(
