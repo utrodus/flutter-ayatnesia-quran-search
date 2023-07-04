@@ -217,6 +217,9 @@ class SearchVersesView extends GetView<SearchVersesController> {
                   itemBuilder: (context, index) {
                     final verse = searchResults.results![index];
                     return VerseItemWidget(
+                      isHasScore: true,
+                      similarityScore: verse.similarity ?? 0.0,
+                      similarityPercentage: verse.similarityPercentage ?? 0.0,
                       name: verse.suratName ?? "-",
                       number: verse.numberInSurah.toString(),
                       verseArabic: verse.arabic ?? "-",

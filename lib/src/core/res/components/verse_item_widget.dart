@@ -12,6 +12,9 @@ class VerseItemWidget extends StatelessWidget {
     required this.number,
     required this.verseArabic,
     required this.verseTranslation,
+    this.isHasScore = false,
+    this.similarityScore = 0.0,
+    this.similarityPercentage = 0.0,
     this.onPressedReadTafsir,
     this.onPressedCopyVerses,
   });
@@ -20,6 +23,9 @@ class VerseItemWidget extends StatelessWidget {
   final String number;
   final String verseArabic;
   final String verseTranslation;
+  final num similarityScore;
+  final num similarityPercentage;
+  final bool isHasScore;
   final void Function()? onPressedReadTafsir;
   final void Function()? onPressedCopyVerses;
 
@@ -35,6 +41,17 @@ class VerseItemWidget extends StatelessWidget {
             fontWeight: semiBold,
           ),
         ),
+        Visibility(
+          visible: isHasScore,
+          child: Text(
+            "Skor Hasil Pengukuran Kemiripan:\n$similarityScore ($similarityPercentage%)",
+            textAlign: TextAlign.left,
+            style: h6Bold(context).copyWith(
+              fontWeight: medium,
+              color: AppColors.grey,
+            ),
+          ),
+        ),
         SizedBox(
           height: Get.height * 0.03,
         ),
@@ -47,6 +64,9 @@ class VerseItemWidget extends StatelessWidget {
               height: 2,
             ),
           ),
+        ),
+        SizedBox(
+          height: Get.height * 0.03,
         ),
         Text(
           "Artinya:",
