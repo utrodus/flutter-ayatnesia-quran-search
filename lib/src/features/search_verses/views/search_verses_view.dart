@@ -16,6 +16,7 @@ class SearchVersesView extends GetView<SearchVersesController> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
+        controller: controller.scrollController,
         physics: const BouncingScrollPhysics(),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -25,7 +26,7 @@ class SearchVersesView extends GetView<SearchVersesController> {
                 horizontal: 17,
               ),
               width: Get.width,
-              height: Get.height * 0.24,
+              height: Get.height * 0.26,
               decoration: BoxDecoration(
                 gradient: LinearGradient(
                   colors: AppColors.primaryGradient,
@@ -335,7 +336,7 @@ class SearchVersesView extends GetView<SearchVersesController> {
                   Padding(
                     padding: EdgeInsets.symmetric(horizontal: Get.width * 0.1),
                     child: const Text(
-                      "Hasil pencarian tidak ditemukan, silakan coba dengan kata kunci yang berbeda.",
+                      "Hasil pencarian tidak ditemukan, Silahkan coba dengan kata kunci yang lain.",
                       textAlign: TextAlign.center,
                     ),
                   ),
@@ -347,6 +348,19 @@ class SearchVersesView extends GetView<SearchVersesController> {
               ),
             )
           ],
+        ),
+      ),
+      floatingActionButton: Obx(
+        () => Visibility(
+          visible: controller.showBackToTopButton.value,
+          child: FloatingActionButton(
+            onPressed: controller.scrollToTop,
+            backgroundColor: AppColors.darkGreen,
+            child: const Icon(
+              Icons.arrow_upward,
+              color: AppColors.onPrimary,
+            ),
+          ),
         ),
       ),
     );

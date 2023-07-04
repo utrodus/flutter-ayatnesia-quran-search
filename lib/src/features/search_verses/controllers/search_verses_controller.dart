@@ -13,6 +13,7 @@ class SearchVersesController extends GetxController
       SearchVerseRemoteDataSource();
   FocusNode searchFocusNode = FocusNode();
   late RxString searchQuery = ''.obs;
+  final RxBool showBackToTopButton = false.obs;
 
   void onTapClearSearchTextField() {
     searchTextFieldController.clear();
@@ -28,19 +29,6 @@ class SearchVersesController extends GetxController
 
   void onFieldSubmittedSearchTextField() {
     if (searchQuery.value.isNotEmpty) {
-      var selectedListSorted =
-          listSorted.firstWhere((element) => element.isSelected == true).value;
-
-      var selectedListMethod =
-          listMethods.firstWhere((element) => element.isSelected == true).value;
-
-      var selectedListTopRelevance = listTopRelevance
-          .firstWhere((element) => element.isSelected == true)
-          .value;
-      debugPrint('searchQuery.value: ${searchQuery.value}');
-      debugPrint('selectedListSorted: $selectedListSorted');
-      debugPrint('selectedListMethod: $selectedListMethod');
-      debugPrint('selectedListTopRelevance: $selectedListTopRelevance');
       searchFocusNode.unfocus();
       searchVerse();
     }
@@ -101,8 +89,6 @@ class SearchVersesController extends GetxController
 
   Future<void> searchVerse() async {
     change(null, status: RxStatus.loading());
-    var selectedListSorted =
-        listSorted.firstWhere((element) => element.isSelected == true).value;
 
     var selectedListMethod =
         listMethods.firstWhere((element) => element.isSelected == true).value;
@@ -110,20 +96,30 @@ class SearchVersesController extends GetxController
     var selectedListTopRelevance = listTopRelevance
         .firstWhere((element) => element.isSelected == true)
         .value;
-    debugPrint('searchQuery.value: ${searchQuery.value}');
-    debugPrint('selectedListSorted: $selectedListSorted');
-    debugPrint('selectedListMethod: $selectedListMethod');
-    debugPrint('selectedListTopRelevance: $selectedListTopRelevance');
-
     var result = await searchVerseRemoteDataSource.searchVerse(
       query: searchQuery.value,
       measureType: selectedListMethod,
       topRelevance: selectedListTopRelevance,
     );
-
+    var selectedListSorted =
+        listSorted.firstWhere((element) => element.isSelected == true).value;
     result.fold(
       (failure) => change(null, status: RxStatus.error(failure)),
-      (response) => change(response, status: RxStatus.success()),
+      (response) {
+        if (response.results!.isNotEmpty) {
+          if (selectedListSorted == 'smallest') {
+            response.results!
+                .sort((a, b) => a.similarity!.compareTo(b.similarity!));
+          } else {
+            response.results!
+                .sort((a, b) => b.similarity!.compareTo(a.similarity!));
+          }
+          change(response, status: RxStatus.success());
+        } else {
+          change(SearchVerseResultModel(executionTime: 0.0, results: []),
+              status: RxStatus.empty());
+        }
+      },
     );
   }
 
@@ -140,10 +136,28 @@ class SearchVersesController extends GetxController
     Clipboard.setData(ClipboardData(text: textToCopy));
   }
 
+  // scroll controller
+  late ScrollController scrollController;
+
   @override
   void onInit() {
     super.onInit();
     change(SearchVerseResultModel(executionTime: 0.0, results: []),
         status: RxStatus.success());
+
+    scrollController = ScrollController()
+      ..addListener(() {
+        if (scrollController.offset >= 400) {
+          showBackToTopButton.value = true; // show the back-to-top button
+        } else {
+          showBackToTopButton.value = false; // hide the back-to-top button
+        }
+      });
+  }
+
+  // This function is triggered when the user presses the back-to-top button
+  void scrollToTop() {
+    scrollController.animateTo(0,
+        duration: const Duration(milliseconds: 400), curve: Curves.linear);
   }
 }

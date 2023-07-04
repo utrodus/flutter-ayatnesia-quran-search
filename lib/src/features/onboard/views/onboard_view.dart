@@ -14,54 +14,46 @@ class OnboardView extends GetView<OnboardController> {
       child: Scaffold(
         body: LayoutBuilder(
           builder: (context, constraint) {
-            return Form(
-              child: SingleChildScrollView(
-                child: ConstrainedBox(
-                  constraints: BoxConstraints(minHeight: constraint.maxHeight),
-                  child: IntrinsicHeight(
-                    child: Column(
-                      children: <Widget>[
-                        SizedBox(height: Get.height * 0.06),
-                        FadeInDown(
-                          child: Image(
-                            image: const AssetImage(AppAssets.imgLogoGreen),
-                            width: Get.width * 0.45,
-                          ),
-                        ),
-                        const SizedBox(height: 25),
-                        FadeInDown(
-                          child: Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 40),
-                            child: Text(
-                              "Pencarian Relevansi Teks Terjemahan Ayat\nAl-Qur'an Dengan Pengukuran Kemiripan Leksikal & Semantik",
-                              style: bodyText2Regular(context).copyWith(),
-                              textAlign: TextAlign.center,
-                            ),
-                          ),
-                        ),
-                        const SizedBox(height: 45),
-                        FadeInUpBig(
-                          child: Center(
-                            child: Image(
-                              image: const AssetImage(AppAssets.imgOnboard),
-                              width: Get.width * 0.7,
-                            ),
-                          ),
-                        ),
-                        const Spacer(),
-                        FadeInUp(
-                          child: CustomButton(
-                            width: Get.width * 0.5,
-                            height: 51,
-                            onPressed: () => controller.onTapGetStarted(),
-                            title: "Mulai Sekarang",
-                          ),
-                        ),
-                        const Spacer(),
-                      ],
+            return SingleChildScrollView(
+              child: Column(
+                children: <Widget>[
+                  SizedBox(height: Get.height * 0.06),
+                  FadeInDown(
+                    child: Image(
+                      image: const AssetImage(AppAssets.imgLogoGreen),
+                      width: Get.width * 0.45,
                     ),
                   ),
-                ),
+                  const SizedBox(height: 25),
+                  FadeInDown(
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 40),
+                      child: Text(
+                        "Pencarian Relevansi Teks Terjemahan Ayat\nAl-Qur'an Dengan Pengukuran Kemiripan Leksikal & Semantik",
+                        style: bodyText2Regular(context).copyWith(),
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: Get.height * 0.05),
+                  FadeInUpBig(
+                    child: Center(
+                      child: Image(
+                        image: const AssetImage(AppAssets.imgOnboard),
+                        width: Get.width * 0.7,
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: Get.height * 0.1),
+                  FadeInUp(
+                    child: CustomButton(
+                      width: Get.width * 0.5,
+                      height: 51,
+                      onPressed: () => controller.onTapGetStarted(),
+                      title: "Mulai Sekarang",
+                    ),
+                  ),
+                ],
               ),
             );
           },

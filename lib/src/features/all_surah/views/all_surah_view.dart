@@ -145,7 +145,7 @@ class AllSurahView extends GetView<AllSurahController> {
           visible: controller.showBackToTopButton.value,
           child: FloatingActionButton(
             onPressed: controller.scrollToTop,
-            backgroundColor: AppColors.primary,
+            backgroundColor: AppColors.darkGreen,
             child: const Icon(
               Icons.arrow_upward,
               color: AppColors.onPrimary,
