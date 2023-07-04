@@ -2,6 +2,7 @@ import 'package:ayat_nesia/src/features/all_surah/datasource/model/all_surah_mod
 import 'package:dartz/dartz.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 
 import '../datasource/remote/all_surah_remote_datasource.dart';
 
@@ -17,12 +18,14 @@ class AllSurahController extends GetxController
       TextEditingController();
   FocusNode searchFocusNode = FocusNode();
   late RxString searchSurahQuery = ''.obs;
+  List<AllSurahModel> allSurahData = <AllSurahModel>[].obs;
+  List<AllSurahModel> resultsSearchByName = <AllSurahModel>[].obs;
 
   void onTapClearSearchTextField() {
     searchSurahTextFieldController.clear();
     searchSurahQuery.value = '';
     searchFocusNode.requestFocus();
-    getAllSurahList();
+    change(allSurahData, status: RxStatus.success());
   }
 
   void onChangedSearchTextField(String value) {
@@ -32,7 +35,7 @@ class AllSurahController extends GetxController
   void onFieldSubmittedSearchTextField() {
     if (searchSurahQuery.value.isNotEmpty) {
       searchFocusNode.unfocus();
-      // searchSurahName();
+      searchSurahName();
     }
   }
 
@@ -47,24 +50,22 @@ class AllSurahController extends GetxController
         if (response.isEmpty) {
           change([], status: RxStatus.empty());
         } else {
+          allSurahData = response;
           change(response, status: RxStatus.success());
         }
       },
     );
   }
 
-  // Future searchSurahName() async {
-  //   // search surah name
-  //   quranResponse.value = AppResponse.loading();
-  //   try {
-  //     final quran = await quranRepo.searchSurahName(
-  //       query: searchSurahQuery.value,
-  //     );
-  //     quranResponse.value = AppResponse.success(data: quran.data);
-  //   } catch (e) {
-  //     quranResponse.value = AppResponse.error(message: e.toString());
-  //   }
-  // }
+  Future searchSurahName() async {
+    if (allSurahData.isNotEmpty) {
+      resultsSearchByName = allSurahData.where((element) {
+        var surahName = element.name!.toLowerCase();
+        return surahName.contains(searchSurahQuery.value.toLowerCase());
+      }).toList();
+      change(resultsSearchByName, status: RxStatus.success());
+    }
+  }
 
   @override
   void onInit() {
