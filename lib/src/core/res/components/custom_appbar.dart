@@ -25,7 +25,7 @@ PreferredSizeWidget customAppBar({
             : null,
         title: Text(
           title,
-          style: bodyText1Bold(context).copyWith(
+          style: h5Bold(context).copyWith(
             color: AppColors.onPrimary,
             fontWeight: semiBold,
           ),

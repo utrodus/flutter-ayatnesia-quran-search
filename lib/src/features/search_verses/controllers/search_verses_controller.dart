@@ -14,7 +14,9 @@ class SearchVersesController extends GetxController
   FocusNode searchFocusNode = FocusNode();
   late RxString searchQuery = ''.obs;
   final RxBool showBackToTopButton = false.obs;
-
+  var selectedTopRelevance =
+      FilterModel(name: '15 Nilai Tertinggi', value: '15', isSelected: true)
+          .obs;
   void onTapClearSearchTextField() {
     searchTextFieldController.clear();
     searchQuery.value = '';
@@ -93,13 +95,15 @@ class SearchVersesController extends GetxController
     var selectedListMethod =
         listMethods.firstWhere((element) => element.isSelected == true).value;
 
-    var selectedListTopRelevance = listTopRelevance
-        .firstWhere((element) => element.isSelected == true)
-        .value;
+    var selectedListTopRelevance =
+        listTopRelevance.firstWhere((element) => element.isSelected == true);
+
+    selectedTopRelevance.value = selectedListTopRelevance;
+
     var result = await searchVerseRemoteDataSource.searchVerse(
       query: searchQuery.value,
       measureType: selectedListMethod,
-      topRelevance: selectedListTopRelevance,
+      topRelevance: selectedListTopRelevance.value,
     );
     var selectedListSorted =
         listSorted.firstWhere((element) => element.isSelected == true).value;

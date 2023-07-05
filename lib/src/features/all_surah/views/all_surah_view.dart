@@ -6,6 +6,7 @@ import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
 
+import '../../../core/res/components/custom_appbar.dart';
 import '../../../core/res/constant/app_colors.dart';
 import '../../../core/res/theme/app_text_style.dart';
 import '../../../routes/app_pages.dart';
@@ -17,12 +18,10 @@ class AllSurahView extends GetView<AllSurahController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text(
-          "Semua Surah Al Qur'an",
-          style: TextStyle(color: AppColors.onPrimary),
-        ),
-        centerTitle: true,
+      appBar: customAppBar(
+        context: context,
+        title: "Semua Surah Al Qur'an",
+        isHasBackBtn: false,
       ),
       body: ListView(
         controller: controller.scrollController,
@@ -31,9 +30,6 @@ class AllSurahView extends GetView<AllSurahController> {
           bottom: 18,
         ),
         children: [
-          // Obx(() => Visibility(
-          //     visible: controller.quranResponse.value.status == Status.loading,
-          //     child: const LinearProgressIndicator())),
           const SizedBox(
             height: 10,
           ),
@@ -71,7 +67,6 @@ class AllSurahView extends GetView<AllSurahController> {
           const SizedBox(
             height: 10,
           ),
-
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20.0),
             child: controller.obx(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../constant/app_colors.dart';
 
 /// Font Family Configs
@@ -15,60 +16,60 @@ FontWeight get extraBold => FontWeight.w800;
 TextTheme get textTheme => TextTheme(
       displayLarge: TextStyle(
         color: AppColors.secondary,
-        fontSize: 32,
+        fontSize: 32.sp,
         height: 1.5,
         fontWeight: bold,
       ),
       displayMedium: TextStyle(
         color: AppColors.secondary,
-        fontSize: 24,
+        fontSize: 24.sp,
         height: 1.5,
         fontWeight: bold,
       ),
       displaySmall: TextStyle(
         color: AppColors.secondary,
-        fontSize: 20,
+        fontSize: 20.sp,
         height: 1.5,
         fontWeight: bold,
       ),
       headlineMedium: TextStyle(
         color: AppColors.secondary,
-        fontSize: 18,
+        fontSize: 18.sp,
         height: 1.5,
         fontWeight: bold,
       ),
       headlineSmall: TextStyle(
         color: AppColors.secondary,
-        fontSize: 16,
+        fontSize: 16.sp,
         height: 1.5,
         fontWeight: bold,
       ),
       titleLarge: TextStyle(
         color: AppColors.secondary,
-        fontSize: 14,
+        fontSize: 14.sp,
         height: 1.5,
         fontWeight: bold,
       ),
       titleMedium: TextStyle(
         color: AppColors.secondary,
-        fontSize: 12,
+        fontSize: 13.sp,
         height: 1.5,
         fontWeight: regular,
       ),
       bodyLarge: TextStyle(
         color: AppColors.secondary,
-        fontSize: 15,
+        fontSize: 15.sp,
         height: 1.5,
         fontWeight: regular,
       ),
       bodyMedium: TextStyle(
         color: AppColors.secondary,
-        fontSize: 14,
+        fontSize: 14.sp,
         fontWeight: regular,
       ),
       bodySmall: TextStyle(
         color: AppColors.secondary,
-        fontSize: 12,
+        fontSize: 13.sp,
         fontWeight: regular,
       ),
     );
@@ -116,9 +117,11 @@ TextStyle bodyText2Regular(BuildContext context) =>
 
 TextStyle bodyText2SemiBold(BuildContext context) =>
     Theme.of(context).textTheme.bodyMedium!.copyWith(fontWeight: semiBold);
+
 TextStyle bodyText2Bold(BuildContext context) =>
     Theme.of(context).textTheme.bodyMedium!.copyWith(fontWeight: bold);
-
+TextStyle bodyText3SemiBold(BuildContext context) =>
+    Theme.of(context).textTheme.bodySmall!.copyWith(fontWeight: semiBold);
 TextStyle subtitle1Regular(BuildContext context) =>
     Theme.of(context).textTheme.titleMedium!;
 

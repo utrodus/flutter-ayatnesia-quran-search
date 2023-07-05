@@ -1,6 +1,7 @@
 import 'package:ayat_nesia/src/core/dependency.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
@@ -15,12 +16,16 @@ void main() async {
     DeviceOrientation.portraitUp,
   ]);
   runApp(
-    GetMaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: "AyatNesia",
-      initialRoute: AppPages.initial,
-      getPages: AppPages.routes,
-      theme: appTheme,
+    ScreenUtilInit(
+      designSize: const Size(360, 800),
+      minTextAdapt: true,
+      builder: (context, _) => GetMaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: "AyatNesia",
+        initialRoute: AppPages.initial,
+        getPages: AppPages.routes,
+        theme: appTheme,
+      ),
     ),
   );
 }

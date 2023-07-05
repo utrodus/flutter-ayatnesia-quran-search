@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
@@ -20,13 +21,13 @@ class SearchVersesView extends GetView<SearchVersesController> {
         physics: const BouncingScrollPhysics(),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Container(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 17,
+              padding: EdgeInsets.symmetric(
+                horizontal: 17.w,
               ),
-              width: Get.width,
-              height: Get.height * 0.26,
+              height: 0.25.sh,
               decoration: BoxDecoration(
                 gradient: LinearGradient(
                   colors: AppColors.primaryGradient,
@@ -37,30 +38,28 @@ class SearchVersesView extends GetView<SearchVersesController> {
                     image: AssetImage(AppAssets.imgHandWithQuran),
                     fit: BoxFit.contain,
                     alignment: Alignment.bottomRight),
-                borderRadius: const BorderRadius.only(
-                  bottomLeft: Radius.circular(12),
-                  bottomRight: Radius.circular(12),
+                borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(12.r),
+                  bottomRight: Radius.circular(12.r),
                 ),
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  const Spacer(),
                   Image(
                     image: const AssetImage(AppAssets.imgLogoWhite),
-                    width: Get.width * 0.35,
+                    width: 120.w,
                   ),
-                  const SizedBox(height: 10),
+                  SizedBox(height: 10.h),
                   Text(
                     "Pencarian Relevansi Teks Pada\nTerjemahan Ayat Al-Qur'an",
-                    style: bodyText2Regular(context).copyWith(
+                    style: bodyText2SemiBold(context).copyWith(
                       color: AppColors.onPrimary,
-                      fontWeight: bold,
                     ),
                   ),
-                  const SizedBox(height: 15),
+                  SizedBox(height: 15.h),
                   Row(
                     children: [
                       Expanded(
@@ -81,7 +80,7 @@ class SearchVersesView extends GetView<SearchVersesController> {
                                           .onTapClearSearchTextField(),
                                       child: Icon(
                                         Icons.close_rounded,
-                                        size: 20,
+                                        size: 20.r,
                                         color:
                                             Theme.of(context).colorScheme.error,
                                       ),
@@ -96,49 +95,47 @@ class SearchVersesView extends GetView<SearchVersesController> {
                           ),
                         ),
                       ),
-                      const SizedBox(width: 10),
+                      SizedBox(width: 10.w),
                       ElevatedButton(
                         onPressed: () => showFilterDialog(
                           context,
                           controller,
                         ),
                         style: ElevatedButton.styleFrom(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 12, vertical: 10),
+                          padding: EdgeInsets.all(14.r),
                           backgroundColor: AppColors.darkGreen,
                           visualDensity: VisualDensity.compact,
-                          minimumSize: const Size(
+                          minimumSize: Size(
                             0,
-                            55,
+                            60.h,
                           ),
                         ),
-                        child: const Icon(
+                        child: Icon(
                           Ionicons.options,
                           color: AppColors.background,
-                          size: 26,
+                          size: 26.r,
                         ),
                       ),
                     ],
                   ),
-                  const Spacer(),
                 ],
               ),
             ),
-            const SizedBox(height: 20),
+            SizedBox(height: 20.h),
             Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 17,
+              padding: EdgeInsets.symmetric(
+                horizontal: 17.w,
               ),
               child: Text(
                 "Pilih Metode Pengukuran Kemiripan:",
                 style: bodyText2SemiBold(context),
               ),
             ),
-            const SizedBox(height: 5),
+            SizedBox(height: 5.h),
             SingleChildScrollView(
               scrollDirection: Axis.horizontal,
-              padding: const EdgeInsets.symmetric(
-                horizontal: 17,
+              padding: EdgeInsets.symmetric(
+                horizontal: 17.w,
               ),
               physics: const BouncingScrollPhysics(),
               child: GetBuilder<SearchVersesController>(
@@ -149,7 +146,7 @@ class SearchVersesView extends GetView<SearchVersesController> {
                     children: controller.listMethods
                         .map(
                           (item) => Padding(
-                            padding: const EdgeInsets.only(right: 8.0),
+                            padding: EdgeInsets.only(right: 8.0.w),
                             child: InputChip(
                               padding: const EdgeInsets.symmetric(
                                 horizontal: 3,
@@ -177,11 +174,26 @@ class SearchVersesView extends GetView<SearchVersesController> {
                 },
               ),
             ),
+            SizedBox(height: 20.h),
+            controller.obx((state) {
+              if (state!.results!.isNotEmpty) {
+                return Padding(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 22,
+                  ),
+                  child: Text(
+                    "Hasil Pencarian dengan kata kunci: ${controller.searchQuery}, berdasarkan ${controller.selectedTopRelevance.value.name == "Tampilkan Semua" ? "Semua Nilai Tertinggi" : controller.selectedTopRelevance.value.name}",
+                    style: bodyText2Regular(context).copyWith(height: 1.6),
+                  ),
+                );
+              }
+              return const SizedBox.shrink();
+            }, onLoading: const SizedBox.shrink()),
             controller.obx(
               (searchResults) {
                 if (searchResults!.results!.isEmpty) {
                   return Padding(
-                    padding: EdgeInsets.only(top: Get.height * 0.10),
+                    padding: EdgeInsets.only(top: 0.10.sh),
                     child: Center(
                         child: Column(
                       children: [
@@ -189,16 +201,16 @@ class SearchVersesView extends GetView<SearchVersesController> {
                           image: const AssetImage(
                             AppAssets.imgInitialState,
                           ),
-                          width: Get.width * 0.5,
+                          width: 0.5.sw,
                         ),
-                        const SizedBox(height: 21),
+                        SizedBox(height: 21.h),
                         Text(
                           "Cari Ayat Al Qur’an",
                           style: h5Bold(context).copyWith(
                             fontWeight: semiBold,
                           ),
                         ),
-                        const SizedBox(height: 7),
+                        SizedBox(height: 7.h),
                         const Text(
                           "Masukkan kata kunci untuk\nmencari ayat Al Qur’an",
                           textAlign: TextAlign.center,
@@ -276,7 +288,7 @@ class SearchVersesView extends GetView<SearchVersesController> {
                                         CrossAxisAlignment.start,
                                     children: [
                                       SizedBox(
-                                        height: Get.height * 0.03,
+                                        height: 30.h,
                                       ),
                                       Align(
                                         alignment: Alignment.centerRight,
@@ -290,7 +302,7 @@ class SearchVersesView extends GetView<SearchVersesController> {
                                         ),
                                       ),
                                       SizedBox(
-                                        height: Get.height * 0.05,
+                                        height: 15.h,
                                       ),
                                       Text(
                                         "Tafsir Ringkas Kemenag:",
@@ -316,34 +328,36 @@ class SearchVersesView extends GetView<SearchVersesController> {
                   },
                 );
               },
-              onEmpty: Column(
-                children: [
-                  SizedBox(height: Get.height * 0.05),
-                  Image(
-                    image: const AssetImage(
-                      AppAssets.imgEmptySearch,
+              onEmpty: Center(
+                child: Column(
+                  children: [
+                    SizedBox(height: 25.h),
+                    Image(
+                      image: const AssetImage(
+                        AppAssets.imgEmptySearch,
+                      ),
+                      width: 0.4.sw,
                     ),
-                    width: Get.width * 0.4,
-                  ),
-                  const SizedBox(height: 21),
-                  Text(
-                    "Ayat Tidak Ditemukan",
-                    style: h5Bold(context).copyWith(
-                      fontWeight: semiBold,
+                    SizedBox(height: 21.h),
+                    Text(
+                      "Ayat Tidak Ditemukan",
+                      style: h5Bold(context).copyWith(
+                        fontWeight: semiBold,
+                      ),
                     ),
-                  ),
-                  const SizedBox(height: 7),
-                  Padding(
-                    padding: EdgeInsets.symmetric(horizontal: Get.width * 0.1),
-                    child: const Text(
-                      "Hasil pencarian tidak ditemukan, Silahkan coba dengan kata kunci yang lain.",
-                      textAlign: TextAlign.center,
+                    SizedBox(height: 7.h),
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 10.w),
+                      child: const Text(
+                        "Hasil pencarian tidak ditemukan,\nSilahkan coba dengan kata kunci yang lain.",
+                        textAlign: TextAlign.center,
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
               onLoading: Padding(
-                padding: EdgeInsets.only(top: Get.height * 0.05),
+                padding: EdgeInsets.only(top: 15.h),
                 child: Lottie.asset(AppAssets.imageSearchLoading),
               ),
             )

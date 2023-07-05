@@ -44,11 +44,22 @@ class VerseItemWidget extends StatelessWidget {
         Visibility(
           visible: isHasScore,
           child: Text(
-            "Skor Hasil Pengukuran Kemiripan:\n$similarityScore ($similarityPercentage%)",
+            "Skor Hasil Pengukuran Kemiripan:",
             textAlign: TextAlign.left,
             style: h6Bold(context).copyWith(
               fontWeight: medium,
               color: AppColors.grey,
+            ),
+          ),
+        ),
+        Visibility(
+          visible: isHasScore,
+          child: Text(
+            "$similarityScore ($similarityPercentage%)",
+            textAlign: TextAlign.left,
+            style: h6Bold(context).copyWith(
+              fontWeight: bold,
+              color: AppColors.darkGreen,
             ),
           ),
         ),

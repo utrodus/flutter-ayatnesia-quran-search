@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 import '../../../../core/res/constant/app_colors.dart';
@@ -12,9 +13,9 @@ showFilterDialog(
   return showModalBottomSheet(
     context: context,
     backgroundColor: AppColors.background,
-    shape: const RoundedRectangleBorder(
+    shape: RoundedRectangleBorder(
       borderRadius: BorderRadius.vertical(
-        top: Radius.circular(25.0),
+        top: Radius.circular(25.0.r),
       ),
     ),
     useSafeArea: true,
@@ -26,19 +27,19 @@ showFilterDialog(
           return Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              const SizedBox(height: 10),
+              SizedBox(height: 10.h),
               Divider(
                 thickness: 4,
                 indent: Get.width * 0.45,
                 endIndent: Get.width * 0.45,
                 color: AppColors.grey.withOpacity(0.3),
               ),
-              const SizedBox(height: 15),
+              SizedBox(height: 15.h),
               Text(
                 "Filter Pencarian",
                 style: h5Bold(context),
               ),
-              const SizedBox(height: 15),
+              SizedBox(height: 15.h),
               Divider(
                 thickness: 1,
                 indent: 22,
@@ -47,9 +48,9 @@ showFilterDialog(
               ),
               Expanded(
                 child: SingleChildScrollView(
-                  padding: const EdgeInsets.symmetric(
-                    vertical: 16,
-                    horizontal: 22,
+                  padding: EdgeInsets.symmetric(
+                    vertical: 16.h,
+                    horizontal: 22.w,
                   ),
                   child: SizedBox(
                     width: Get.width,
@@ -59,19 +60,19 @@ showFilterDialog(
                       children: [
                         Text(
                           "Urutkan Hasil Relevansi Berdasarkan:",
-                          style: bodyText2SemiBold(context),
+                          style: bodyText3SemiBold(context),
                         ),
-                        const SizedBox(height: 10),
+                        SizedBox(height: 10.h),
                         Wrap(
                           crossAxisAlignment: WrapCrossAlignment.center,
-                          spacing: 10,
+                          spacing: 10.r,
                           alignment: WrapAlignment.start,
                           children: controller.listSorted
                               .map(
                                 (item) => InputChip(
-                                  padding: const EdgeInsets.symmetric(
-                                    horizontal: 3,
-                                    vertical: 5,
+                                  padding: EdgeInsets.symmetric(
+                                    horizontal: 3.w,
+                                    vertical: 5.h,
                                   ),
                                   selectedColor: AppColors.lightGreen,
                                   labelStyle:
@@ -92,22 +93,22 @@ showFilterDialog(
                               )
                               .toList(),
                         ),
-                        const SizedBox(height: 20),
+                        SizedBox(height: 20.h),
                         Text(
                           "Tampilkan Hasil Pencarian Berdasarkan:",
-                          style: bodyText2SemiBold(context),
+                          style: bodyText3SemiBold(context),
                         ),
-                        const SizedBox(height: 10),
+                        SizedBox(height: 10.h),
                         Wrap(
                           crossAxisAlignment: WrapCrossAlignment.center,
-                          spacing: 10,
+                          spacing: 10.r,
                           alignment: WrapAlignment.start,
                           children: controller.listTopRelevance
                               .map(
                                 (item) => InputChip(
-                                  padding: const EdgeInsets.symmetric(
-                                    horizontal: 3,
-                                    vertical: 5,
+                                  padding: EdgeInsets.symmetric(
+                                    horizontal: 3.w,
+                                    vertical: 5.h,
                                   ),
                                   selectedColor: AppColors.lightGreen,
                                   labelStyle:
@@ -133,17 +134,17 @@ showFilterDialog(
                   ),
                 ),
               ),
-              const SizedBox(height: 10),
+              SizedBox(height: 10.h),
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
                   backgroundColor: AppColors.darkGreen,
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10),
+                    borderRadius: BorderRadius.circular(10.r),
                   ),
-                  minimumSize: Size(Get.width * 0.9, 44),
+                  minimumSize: Size(0.9.sw, 44.h),
                   padding: EdgeInsets.symmetric(
-                    horizontal: Get.width * 0.25,
-                    vertical: 12,
+                    horizontal: 0.25.sw,
+                    vertical: 12.h,
                   ),
                 ),
                 onPressed: () {
@@ -158,7 +159,7 @@ showFilterDialog(
                   ),
                 ),
               ),
-              const SizedBox(height: 20),
+              SizedBox(height: 20.h),
             ],
           );
         },
@@ -167,7 +168,7 @@ showFilterDialog(
     isScrollControlled: true,
     enableDrag: false,
     constraints: BoxConstraints(
-      maxHeight: Get.height * 0.57,
+      maxHeight: 0.57.sh,
     ),
     isDismissible: false,
   );

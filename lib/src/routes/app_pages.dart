@@ -13,8 +13,6 @@ import '../core/utils/prefs_manager.dart';
 part 'app_routes.dart';
 
 class AppPages {
-  AppPages._();
-
   static String initial =
       PrefsManager.isFirstTime ? Routes.onboard : Routes.mainScreen;
 

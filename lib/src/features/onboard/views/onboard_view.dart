@@ -1,5 +1,6 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import '../../../core/res/components/custom_button.dart';
 import '../../../core/res/constant/app_assets.dart';
@@ -17,14 +18,14 @@ class OnboardView extends GetView<OnboardController> {
             return SingleChildScrollView(
               child: Column(
                 children: <Widget>[
-                  SizedBox(height: Get.height * 0.06),
+                  SizedBox(height: 50.h),
                   FadeInDown(
                     child: Image(
                       image: const AssetImage(AppAssets.imgLogoGreen),
-                      width: Get.width * 0.45,
+                      width: 165.w,
                     ),
                   ),
-                  const SizedBox(height: 25),
+                  SizedBox(height: 25.h),
                   FadeInDown(
                     child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 40),
@@ -35,20 +36,20 @@ class OnboardView extends GetView<OnboardController> {
                       ),
                     ),
                   ),
-                  SizedBox(height: Get.height * 0.05),
+                  SizedBox(height: 50.h),
                   FadeInUpBig(
                     child: Center(
                       child: Image(
                         image: const AssetImage(AppAssets.imgOnboard),
-                        width: Get.width * 0.7,
+                        width: 0.65.sw,
                       ),
                     ),
                   ),
-                  SizedBox(height: Get.height * 0.1),
+                  SizedBox(height: 80.h),
                   FadeInUp(
                     child: CustomButton(
-                      width: Get.width * 0.5,
-                      height: 51,
+                      width: 0.5.sw,
+                      height: 51.h,
                       onPressed: () => controller.onTapGetStarted(),
                       title: "Mulai Sekarang",
                     ),
