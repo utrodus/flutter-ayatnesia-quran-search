@@ -1,6 +1,7 @@
 
-## **Flutter Ayatnesia Qur'an Search Overview**
+## **Flutter Ayatnesia Qur'an Search**
 
+### Overview
 Flutter Ayatnesia Qur'an Search is a mobile application developed using Flutter, which serves as my final project for completing a Computer Science degree at Nahdlatul Ulama University, Blitar.
 
 This application features a search capability for the text of Qur'anic verses in Indonesian translation, utilizing both lexical and semantic similarity measurements. Flutter Ayatnesia is designed to meet the needs of users looking for relevant Qur'anic verses, whether based on keyword similarity or semantic meaning, by leveraging the Al-Qur'an dataset provided by the Indonesian Ministry of Religious Affairs (Kemenag). This makes it easier for the Indonesian public to find verses that best match their needs.
@@ -14,8 +15,9 @@ The search feature and Qur'anic data management are integrated through a REST AP
 - **Relevance Calculation:** Search results include relevance scores based on three methods: lexical, semantic, and combined.
 - **Brief Interpretation by Kemenag:** The application also features brief interpretations by Kemenag, making it easier for users to read and understand the interpretation of each verse.
 
+### Demo App
 
-Berikut adalah versi bahasa Inggris yang telah diperbaiki dan dirapikan:
+https://github.com/user-attachments/assets/8534e8a1-ed60-46e6-be83-beaf548a67dc
 
 ---
 
@@ -78,11 +80,6 @@ Berikut adalah versi bahasa Inggris yang telah diperbaiki dan dirapikan:
     - Regular (400): `assets/fonts/Poppins-Regular.ttf`
   - **LPMQ-IsepMisbah**:
     - Regular (400): `assets/fonts/LPMQ-IsepMisbah.ttf`
-
-## Demo App
-
-https://github.com/user-attachments/assets/8534e8a1-ed60-46e6-be83-beaf548a67dc
-
 
 
 ## Getting Started with AyatNesia
