@@ -1,6 +1,24 @@
 
 ## **Flutter Ayatnesia Qur'an Search**
 
+## Table of Contents
+- [Flutter Ayatnesia Qur'an Search](#flutter-ayatnesia-quran-search)
+  - [Overview](#overview)
+  - [Demo App](#demo-app)
+- [Developed By 👨‍💻](#developed-by-)
+- [Technologies Used ⚙](#technologies-used-)
+- [Dependencies 📦](#dependencies-)
+- [Assets](#assets)
+- [Getting Started with AyatNesia](#getting-started-with-ayatnesia)
+  - [Prerequisites](#prerequisites)
+  - [Clone the Repository](#clone-the-repository)
+  - [Install Dependencies](#install-dependencies)
+- [Run the Project](#run-the-project)
+  - [(Optional) Generate Native Splash Screen](#optional-generate-native-splash-screen)
+- [Troubleshooting](#troubleshooting)
+- [Additional Information](#additional-information)
+
+
 ### Overview
 Flutter Ayatnesia Qur'an Search is a mobile application developed using Flutter, which serves as my final project for completing a Computer Science degree at Nahdlatul Ulama University, Blitar.
 
