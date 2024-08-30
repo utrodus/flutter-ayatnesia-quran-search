@@ -79,7 +79,7 @@ class SurahItem extends StatelessWidget {
                           children: [
                             Text(
                               subtitle1,
-                              style: bodyText2Regular(context).copyWith(
+                              style: subtitle1Regular(context).copyWith(
                                 fontWeight: medium,
                                 color: AppColors.grey,
                               ),
@@ -95,7 +95,7 @@ class SurahItem extends StatelessWidget {
                             ),
                             Text(
                               subtitle2,
-                              style: bodyText2Regular(context).copyWith(
+                              style: subtitle1Regular(context).copyWith(
                                 fontWeight: medium,
                                 color: AppColors.grey,
                               ),
