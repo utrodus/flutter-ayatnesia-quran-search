@@ -81,6 +81,9 @@ Berikut adalah versi bahasa Inggris yang telah diperbaiki dan dirapikan:
 
 ## Demo App
 
+https://github.com/user-attachments/assets/8534e8a1-ed60-46e6-be83-beaf548a67dc
+
+
 
 ## Getting Started with AyatNesia
 
