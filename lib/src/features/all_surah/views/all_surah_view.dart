@@ -14,7 +14,7 @@ import '../controllers/all_surah_controller.dart';
 import 'widgets/surah_item.dart';
 
 class AllSurahView extends GetView<AllSurahController> {
-  const AllSurahView({Key? key}) : super(key: key);
+  const AllSurahView({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(

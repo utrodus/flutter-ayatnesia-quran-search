@@ -10,7 +10,7 @@ import '../../search_verses/views/search_verses_view.dart';
 import '../controllers/main_screen_controller.dart';
 
 class MainScreenView extends GetView<MainScreenController> {
-  const MainScreenView({Key? key}) : super(key: key);
+  const MainScreenView({super.key});
   @override
   Widget build(BuildContext context) {
     return Obx(

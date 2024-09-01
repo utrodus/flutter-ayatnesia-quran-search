@@ -12,14 +12,14 @@ class CustomButton extends StatelessWidget {
   final TextStyle? titleStyle;
 
   const CustomButton({
-    Key? key,
+    super.key,
     required this.onPressed,
     required this.title,
     this.borderRadius = const BorderRadius.all(Radius.circular(12)),
     this.width,
     this.height = 44.0,
     this.titleStyle,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

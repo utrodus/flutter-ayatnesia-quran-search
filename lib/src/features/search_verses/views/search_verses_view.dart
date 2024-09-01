@@ -12,7 +12,7 @@ import 'widgets/search_filter.dart';
 import 'package:lottie/lottie.dart';
 
 class SearchVersesView extends GetView<SearchVersesController> {
-  const SearchVersesView({Key? key}) : super(key: key);
+  const SearchVersesView({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(

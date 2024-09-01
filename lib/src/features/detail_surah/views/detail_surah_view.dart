@@ -9,7 +9,7 @@ import '../../../core/res/theme/app_text_style.dart';
 import '../controllers/detail_surah_controller.dart';
 
 class DetailSurahView extends GetView<DetailSurahController> {
-  const DetailSurahView({Key? key}) : super(key: key);
+  const DetailSurahView({super.key});
   @override
   Widget build(BuildContext context) {
     return SafeArea(
