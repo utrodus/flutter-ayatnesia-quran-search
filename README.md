@@ -2,14 +2,11 @@
 ## **Flutter Ayatnesia Qur'an Search**
 
 ## Table of Contents
-- [Flutter Ayatnesia Qur'an Search](#flutter-ayatnesia-quran-search)
+- [**Flutter Ayatnesia Qur'an Search**](#flutter-ayatnesia-quran-search)
+- [Table of Contents](#table-of-contents)
   - [Overview](#overview)
   - [Demo App](#demo-app)
-- [Developed By 👨‍💻](#developed-by-)
-- [Technologies Used ⚙](#technologies-used-)
-- [Dependencies 📦](#dependencies-)
-- [Assets](#assets)
-- [Getting Started with AyatNesia](#getting-started-with-ayatnesia)
+- [Getting Started with AyatNesia Qur'an Search](#getting-started-with-ayatnesia-quran-search)
   - [Prerequisites](#prerequisites)
   - [Clone the Repository](#clone-the-repository)
   - [Install Dependencies](#install-dependencies)
@@ -17,6 +14,10 @@
   - [(Optional) Generate Native Splash Screen](#optional-generate-native-splash-screen)
 - [Troubleshooting](#troubleshooting)
 - [Additional Information](#additional-information)
+- [Developed By 👨‍💻](#developed-by-)
+- [Technologies Used ⚙](#technologies-used-)
+- [Dependencies 📦](#dependencies-)
+- [Assets](#assets)
 
 
 ### Overview
@@ -38,6 +39,84 @@ The search feature and Qur'anic data management are integrated through a REST AP
 https://github.com/user-attachments/assets/8534e8a1-ed60-46e6-be83-beaf548a67dc
 
 ---
+
+## Getting Started with AyatNesia Qur'an Search
+
+Follow these steps to set up and run the **AyatNesia Qur'an Search** project in your local development environment.
+
+### Prerequisites
+
+Ensure you have installed the following prerequisites:
+
+1. **Flutter SDK**: Version `>=3.1.0`
+2. **Dart SDK**: Included with the Flutter SDK.
+3. **Git**: For cloning the repository.
+4. **Code Editor**: [Visual Studio Code](https://code.visualstudio.com/) or [Android Studio](https://developer.android.com/studio) is recommended.
+
+### Clone the Repository
+
+1. Open a terminal or command prompt.
+2. Run the following command to clone the repository to your local machine:
+
+    ```bash
+    git clone https://github.com/utrodus/flutter-ayatnesia-quran-search
+    ```
+
+3. Navigate to the cloned project directory:
+
+    ```bash
+    cd flutter-ayatnesia-quran-search
+    ```
+
+### Install Dependencies
+
+Once the repository is successfully cloned, the next step is to install all the dependencies required by the project:
+
+1. Run the following command to download and install all the necessary Flutter packages:
+
+    ```bash
+    flutter pub get
+    ```
+
+## Run the Project
+
+After all dependencies are installed and the splash screen is generated, you can run the project with the following steps:
+
+0. First of all before you run Ayatnesia Qur'an Search project, make sure you have **Setup and Run** [Ayatnesia API](https://github.com/utrodus/fastapi-ayatnesia) in your machine
+1. Connect your Android or iOS device to your computer, or run an emulator.
+2. Run the following command to start the application:
+
+    ```bash
+    flutter run
+    ```
+
+The project will be compiled and run on the connected device or emulator.
+
+### (Optional) Generate Native Splash Screen
+
+This project uses the `flutter_native_splash` package to generate a native splash screen. Follow these steps to generate the native splash screen:
+
+1. Run the following commands in the terminal:
+
+    ```bash
+    flutter clean
+    flutter pub get
+    flutter pub run flutter_native_splash:create
+    ```
+
+## Troubleshooting
+
+If you encounter issues while running the project, try the following steps:
+
+- Ensure all prerequisites are installed correctly.
+- Run `flutter doctor` to check for any issues with your Flutter installation.
+- If there are dependency issues, run `flutter pub get` again.
+- Check the `pubspec.yaml` file to ensure there are no syntax errors or incorrect package versions.
+
+## Additional Information
+For more information on how to use Flutter, visit the [official Flutter documentation](https://flutter.dev/docs).
+
+--- 
 
 ## Developed By 👨‍💻
 
@@ -98,81 +177,5 @@ https://github.com/user-attachments/assets/8534e8a1-ed60-46e6-be83-beaf548a67dc
     - Regular (400): `assets/fonts/Poppins-Regular.ttf`
   - **LPMQ-IsepMisbah**:
     - Regular (400): `assets/fonts/LPMQ-IsepMisbah.ttf`
-
-
-## Getting Started with AyatNesia
-
-Follow these steps to set up and run the **AyatNesia** project in your local development environment.
-
-### Prerequisites
-
-Ensure you have installed the following prerequisites:
-
-1. **Flutter SDK**: Version `>=2.19.1 <3.0.0`
-2. **Dart SDK**: Included with the Flutter SDK.
-3. **Git**: For cloning the repository.
-4. **Code Editor**: [Visual Studio Code](https://code.visualstudio.com/) or [Android Studio](https://developer.android.com/studio) is recommended.
-
-### Clone the Repository
-
-1. Open a terminal or command prompt.
-2. Run the following command to clone the repository to your local machine:
-
-    ```bash
-    git clone https://github.com/username/ayat_nesia.git
-    ```
-
-3. Navigate to the cloned project directory:
-
-    ```bash
-    cd ayat_nesia
-    ```
-
-### Install Dependencies
-
-Once the repository is successfully cloned, the next step is to install all the dependencies required by the project:
-
-1. Run the following command to download and install all the necessary Flutter packages:
-
-    ```bash
-    flutter pub get
-    ```
-
-## Run the Project
-
-After all dependencies are installed and the splash screen is generated, you can run the project with the following steps:
-
-1. Connect your Android or iOS device to your computer, or run an emulator.
-2. Run the following command to start the application:
-
-    ```bash
-    flutter run
-    ```
-
-The project will be compiled and run on the connected device or emulator.
-
-### (Optional) Generate Native Splash Screen
-
-This project uses the `flutter_native_splash` package to generate a native splash screen. Follow these steps to generate the native splash screen:
-
-1. Run the following commands in the terminal:
-
-    ```bash
-    flutter clean
-    flutter pub get
-    flutter pub run flutter_native_splash:create
-    ```
-
-## Troubleshooting
-
-If you encounter issues while running the project, try the following steps:
-
-- Ensure all prerequisites are installed correctly.
-- Run `flutter doctor` to check for any issues with your Flutter installation.
-- If there are dependency issues, run `flutter pub get` again.
-- Check the `pubspec.yaml` file to ensure there are no syntax errors or incorrect package versions.
-
-## Additional Information
-For more information on how to use Flutter, visit the [official Flutter documentation](https://flutter.dev/docs).
 
 
