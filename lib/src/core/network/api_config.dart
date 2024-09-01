@@ -1,7 +1,11 @@
 class ApiConfig {
   ApiConfig._();
-  // static const String baseUrl = "https://riset.unublitar.ac.id/ayatnesia/api";
-  static const String baseUrl = "http://127.0.0.1:8000/api";
+
+  /// for android emulator use http://10.0.2.2:8000
+  ///
+  /// for ios emulator or real device use http://localhost:8000
+  static const String baseUrl = "http://10.0.2.2:8000/api";
+
   static const Duration receiveTimeout = Duration(seconds: 500);
   static const Duration connectionTimeout = Duration(seconds: 500);
 

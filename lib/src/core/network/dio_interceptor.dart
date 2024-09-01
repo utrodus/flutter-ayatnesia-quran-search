@@ -5,7 +5,7 @@ class DioInterceptor extends Interceptor {
   final Logger logger = Logger(
     printer: PrettyPrinter(
       methodCount: 0,
-      printTime: false,
+      dateTimeFormat: DateTimeFormat.none,
     ),
   );
 

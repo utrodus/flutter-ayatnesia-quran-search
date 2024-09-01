@@ -12,7 +12,7 @@ class Log {
     printer: PrettyPrinter(
       colors: true,
       printEmojis: true,
-      printTime: true,
+      dateTimeFormat: DateTimeFormat.none,
       methodCount: 3,
     ),
   );
@@ -39,6 +39,6 @@ class Log {
 
   /// Log.v : verbose log
   Log.v(this._prefix, this._message) {
-    logger.v("$_prefix : $_message");
+    logger.t("$_prefix : $_message");
   }
 }
