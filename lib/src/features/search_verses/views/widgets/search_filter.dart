@@ -166,10 +166,10 @@ showFilterDialog(
       );
     },
     isScrollControlled: true,
-    enableDrag: false,
+    enableDrag: true,
     constraints: BoxConstraints(
       maxHeight: 0.57.sh,
     ),
-    isDismissible: false,
+    isDismissible: true,
   );
 }
