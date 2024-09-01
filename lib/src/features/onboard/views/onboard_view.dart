@@ -8,7 +8,7 @@ import '../../../core/res/theme/app_text_style.dart';
 import '../controllers/onboard_controller.dart';
 
 class OnboardView extends GetView<OnboardController> {
-  const OnboardView({Key? key}) : super(key: key);
+  const OnboardView({super.key});
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -30,7 +30,17 @@ class OnboardView extends GetView<OnboardController> {
                     child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 40),
                       child: Text(
-                        "Pencarian Relevansi Teks Terjemahan Ayat\nAl-Qur'an Dengan Pengukuran Kemiripan Leksikal & Semantik",
+                        "Pencarian Relevansi Teks Terjemahan",
+                        style: bodyText2Regular(context).copyWith(),
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                  ),
+                  FadeInDown(
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 40),
+                      child: Text(
+                        "Ayat Al-Qur'an Dengan Pengukuran Kemiripan Leksikal & Semantik",
                         style: bodyText2Regular(context).copyWith(),
                         textAlign: TextAlign.center,
                       ),
