@@ -30,7 +30,7 @@ dev_dependencies:
 # Run command to generate native splash screen
 # 1) flutter clean
 # 2) flutter pub get
-# 3) flutter pub run flutter_native_splash:create
+# 3) dart pub run flutter_native_splash:create
 flutter_native_splash:
   color: '#ffffff'
   image: assets/img/img_logo_green.png
