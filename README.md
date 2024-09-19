@@ -113,6 +113,18 @@ If you encounter issues while running the project, try the following steps:
 - If there are dependency issues, run `flutter pub get` again.
 - Check the `pubspec.yaml` file to ensure there are no syntax errors or incorrect package versions.
 
+If you have trouble with pod install, try running the following command:
+```bash
+sudo arch -x86_64 gem install ffi
+```
+```bash
+cd ios
+```
+
+```bash
+arch -x86_64 pod install
+```
+
 ## Additional Information
 For more information on how to use Flutter, visit the [official Flutter documentation](https://flutter.dev/docs).
 
